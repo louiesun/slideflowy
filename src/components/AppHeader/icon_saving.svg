@@ -1,0 +1,29 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+import React from "react";
+export default ((_ref) => {
+  let {
+    styles = {}
+  } = _ref,
+      props = _objectWithoutProperties(_ref, ["styles"]);
+
+  return React.createElement(
+    "svg",
+    _extends({ "data-name": "\u56FE\u5C42 1", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 16 16" }, props),
+    React.createElement(
+      "g",
+      { "data-name": "\u9875\u9762-3" },
+      React.createElement(
+        "g",
+        { "data-name": "\u5927\u7EB2\u7B14\u8BB0\u6F14\u793A\u6587\u7A3F\u5165\u53E3" },
+        React.createElement(
+          "g",
+          { "data-name": "syncing", fill: "#9094a0" },
+          React.createElement("path", { "data-name": "Path", d: "M1.4 10.55A.89.89 0 0 0 1 11.8a8 8 0 0 0 13.5.87l.86.52a.45.45 0 0 0 .45 0 .43.43 0 0 0 .22-.4l-.09-3.68a.5.5 0 0 0 0-.16.45.45 0 0 0-.62-.23L12 10.42a.46.46 0 0 0-.24.38.46.46 0 0 0 .22.4l.95.56A6.21 6.21 0 0 1 2.51 11a.88.88 0 0 0-1.1-.41zM14.6 5.45a.89.89 0 0 0 .45-1.25 8 8 0 0 0-13.5-.87l-.86-.52a.45.45 0 0 0-.45 0 .43.43 0 0 0-.22.4l.09 3.68a.5.5 0 0 0 0 .16.45.45 0 0 0 .62.23L4 5.58a.46.46 0 0 0 .24-.38.46.46 0 0 0-.24-.4l-1-.56a6.21 6.21 0 0 1 10.4.8.89.89 0 0 0 1.11.41z" })
+        )
+      )
+    )
+  );
+});

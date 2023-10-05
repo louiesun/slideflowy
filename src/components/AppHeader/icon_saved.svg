@@ -1,0 +1,30 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+import React from "react";
+export default ((_ref) => {
+  let {
+    styles = {}
+  } = _ref,
+      props = _objectWithoutProperties(_ref, ["styles"]);
+
+  return React.createElement(
+    "svg",
+    _extends({ "data-name": "\u56FE\u5C42 1", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 16 16" }, props),
+    React.createElement(
+      "g",
+      { "data-name": "\u9875\u9762-3" },
+      React.createElement(
+        "g",
+        { "data-name": "\u5927\u7EB2\u7B14\u8BB0\u6F14\u793A\u6587\u7A3F\u5165\u53E3" },
+        React.createElement(
+          "g",
+          { "data-name": "synced", fill: "#9094a0" },
+          React.createElement("path", { "data-name": "Shape", d: "M8 0a8 8 0 1 0 8 8 8 8 0 0 0-8-8zm4.52 12.52A6.4 6.4 0 1 1 14.39 8a6.39 6.39 0 0 1-1.87 4.52z" }),
+          React.createElement("path", { "data-name": "Path", d: "M11 5.58L7.12 9.47 5 7.34a.81.81 0 0 0-1.14 0 .81.81 0 0 0 0 1.14l2.69 2.69a.81.81 0 0 0 1.14 0l4.45-4.45A.81.81 0 1 0 11 5.58z" })
+        )
+      )
+    )
+  );
+});

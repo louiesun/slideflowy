@@ -1,0 +1,41 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+import React from "react";
+export default ((_ref) => {
+  let {
+    styles = {}
+  } = _ref,
+      props = _objectWithoutProperties(_ref, ["styles"]);
+
+  return React.createElement(
+    "svg",
+    _extends({ xmlns: "http://www.w3.org/2000/svg", width: "52", height: "52", viewBox: "0 0 52 52" }, props),
+    React.createElement(
+      "defs",
+      null,
+      React.createElement(
+        "clipPath",
+        { id: "a" },
+        React.createElement("ellipse", { "data-name": "\u692D\u5706 2", fill: "none", className: styles["cls-1"] || "cls-1", cx: "26", cy: "26", rx: "26", ry: "26" })
+      )
+    ),
+    React.createElement(
+      "g",
+      { transform: "translate(-450 -417)" },
+      React.createElement("ellipse", { "data-name": "\u692D\u5706 1", fill: "#ecf3fe", className: styles["cls-2"] || "cls-2", cx: "26", cy: "26", rx: "26", ry: "26", transform: "translate(450 417)" }),
+      React.createElement(
+        "g",
+        { "data-name": "\u7EC4 2" },
+        React.createElement(
+          "g",
+          { "data-name": "\u7EC4 1", clipPath: "url(#a)", className: styles["cls-3"] || "cls-3", transform: "translate(450 417)" },
+          React.createElement("path", { "data-name": "\u8DEF\u5F84 1", className: styles["cls-4"] || "cls-4", fill: "#5b9ae9", d: "M29.07 35.79L16.2 23.23-14.17 53.6l2.34 5.55 16.36 4.09 21.03-6.73z" }),
+          React.createElement("path", { "data-name": "\u8DEF\u5F84 2", fill: "#438be7", className: styles["cls-5"] || "cls-5", d: "M53.02 29.07L40.17 16.5 9.79 46.89l2.33 5.55 16.36 4.09 21.04-6.72z" })
+        )
+      ),
+      React.createElement("ellipse", { "data-name": "\u692D\u5706 3", className: styles["cls-4"] || "cls-4", fill: "#5b9ae9", cx: "4.07", cy: "4.07", rx: "4.07", ry: "4.07", transform: "translate(459.65 417.87)" })
+    )
+  );
+});
