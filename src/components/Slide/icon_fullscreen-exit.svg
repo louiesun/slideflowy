@@ -1,0 +1,17 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconFullscreenExit(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    "data-name": "\\u56FE\\u5C42 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 20 20",
+    width: "1em",
+    height: "1em"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    "data-name": "ec7a7f21-264a-4ca8-a007-b3f3a4021bf7",
+    d: "M19 6a1 1 0 010 2h-1.5A5.5 5.5 0 0112 2.5V1a1 1 0 012 0v1.5A3.5 3.5 0 0017.5 6H19zm-5 13a1 1 0 01-2 0v-1.5a5.5 5.5 0 015.5-5.5H19a1 1 0 010 2h-1.5a3.5 3.5 0 00-3.5 3.5zM1 14a1 1 0 010-2h1.5A5.5 5.5 0 018 17.5V19a1 1 0 01-2 0v-1.5A3.5 3.5 0 002.5 14zM6 1a1 1 0 012 0v1.5A5.5 5.5 0 012.5 8H1a1 1 0 010-2h1.5A3.5 3.5 0 006 2.5z",
+    fill: "#d2d2d2"
+  })));
+}
+export default SvgIconFullscreenExit;

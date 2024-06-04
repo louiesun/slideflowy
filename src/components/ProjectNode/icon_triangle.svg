@@ -1,0 +1,13 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconTriangle(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    width: "1em",
+    height: "1em",
+    viewBox: "0 0 20 20"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M13.75 9.57a.5.5 0 010 .86L8.5 13.47a.5.5 0 01-.75-.44V6.97a.5.5 0 01.75-.43l5.25 3.03z"
+  })));
+}
+export default SvgIconTriangle;

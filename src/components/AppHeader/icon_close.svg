@@ -1,0 +1,16 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconClose(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    className: "icon_close_svg__icon",
+    viewBox: "0 0 1024 1024",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "1em",
+    height: "1em"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M886.53 908.03c-28.1 28.1-73.86 28.1-102.02 0l-646.2-646.2c-28.1-28.17-28.17-73.86 0-102.02 28.03-28.16 73.79-28.16 102.07 0l646.15 646.14c28.1 28.29 28.22 73.92 0 102.08zm-.77-646.53L239.62 907.65a72.12 72.12 0 01-102.08 0c-28.16-28.1-28.16-73.73.06-102.02l646.14-646.08c28.23-28.16 73.99-28.16 102.02-.06 28.22 28.16 28.1 73.85 0 102.01z",
+    fill: "#9094A0"
+  })));
+}
+export default SvgIconClose;

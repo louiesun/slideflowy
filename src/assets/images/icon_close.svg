@@ -1,0 +1,16 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconClose(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    "data-name": "\\u56FE\\u5C42 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 1024 1024",
+    width: "1em",
+    height: "1em"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M577 512l349.7-352.08c17.91-18 17-46.35-2.09-63.28s-49-16-66.93 2L512 446.6l-345.64-348c-17.91-18-47.87-18.91-66.93-2s-20 45.26-2.09 63.28L447 512 97.34 864.08c-17.91 18-17 46.35 2.09 63.28s49 16 66.93-2L512 577.4l345.64 348c17.91 18 47.87 18.91 66.93 2s20-45.26 2.09-63.28z",
+    fill: "#6d6d6d"
+  })));
+}
+export default SvgIconClose;

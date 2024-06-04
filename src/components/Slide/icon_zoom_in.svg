@@ -1,0 +1,15 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconZoomIn(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 1024 1024",
+    width: "1em",
+    height: "1em"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M467.22 64c222.69 0 403.22 180.53 403.22 403.21a401.56 401.56 0 01-88.15 251.66l164.64 164.68a44.8 44.8 0 01-59.14 67.09l-4.22-3.73-164.68-164.64a401.56 401.56 0 01-251.66 88.15c-222.69 0-403.22-180.53-403.22-403.21S244.53 64 467.22 64zm0 89.6c-173.21 0-313.61 140.4-313.61 313.61s140.41 313.61 313.61 313.61 313.61-140.4 313.61-313.61S640.43 153.6 467.22 153.6zm0 134.4a44.8 44.8 0 0144.8 44.8v89.6h89.6a44.8 44.8 0 010 89.6h-89.6v89.6a44.8 44.8 0 01-89.6 0V512h-89.6a44.8 44.8 0 010-89.6h89.6v-89.6a44.8 44.8 0 0144.8-44.8z",
+    fill: "#fff"
+  })));
+}
+export default SvgIconZoomIn;

@@ -1,0 +1,15 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconReset(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 1024 1024",
+    width: "1em",
+    height: "1em"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M825.6 64C899.83 64 960 124.17 960 198.4v627.2c0 74.23-60.17 134.4-134.4 134.4H198.4C124.17 960 64 899.83 64 825.6V198.4C64 124.17 124.17 64 198.4 64h627.2zm0 89.6H198.4a44.8 44.8 0 00-44.8 44.8v627.2a44.8 44.8 0 0044.8 44.8h627.2a44.8 44.8 0 0044.8-44.8V198.4a44.8 44.8 0 00-44.8-44.8zM332.8 332.8a44.8 44.8 0 0144.8 44.8v268.8a44.8 44.8 0 01-89.6 0v-224a44.8 44.8 0 010-89.6h44.8zm358.4 0a44.8 44.8 0 0144.8 44.8v268.8a44.8 44.8 0 01-89.6.06V422.4a44.8 44.8 0 010-89.6h44.8zM512 556.8a44.8 44.8 0 11-44.8 44.8 44.8 44.8 0 0144.8-44.8zm0-179.2a44.8 44.8 0 11-44.8 44.8 44.8 44.8 0 0144.8-44.8z",
+    fill: "#fff"
+  })));
+}
+export default SvgIconReset;

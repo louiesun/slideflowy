@@ -1,0 +1,14 @@
+var _path;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+import * as React from "react";
+function SvgIconSaving(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 20 20",
+    width: "1em",
+    height: "1em"
+  }, props), _path || (_path = /*#__PURE__*/React.createElement("path", {
+    d: "M17.88 10.92h.1c.41.1.66.5.58.9a8.75 8.75 0 01-15.81 3.07v3.1c0 .38-.28.69-.65.74H2a.75.75 0 01-.75-.74v-5c0-.41.34-.75.75-.75h5c.41 0 .75.34.75.75s-.34.75-.75.75H3.79a7.24 7.24 0 0013.3-2.23.74.74 0 01.69-.59h.1zM18 1.25c.41 0 .75.34.75.75v5c0 .41-.34.75-.75.75h-5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h3.21A7.24 7.24 0 002.9 8.53a.74.74 0 01-.89.58.74.74 0 01-.58-.89A8.75 8.75 0 0117.25 5.1V2c0-.38.28-.69.65-.74h.1z"
+  })));
+}
+export default SvgIconSaving;

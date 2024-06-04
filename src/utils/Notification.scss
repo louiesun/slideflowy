@@ -1,0 +1,4 @@
+exports = module.exports = require("../../node_modules/css-loader/dist/runtime/api.js")(true);
+// Module
+exports.push([module.id, ".snackbar-container * {\n  font-weight: normal !important;\n}\n\n.snackbar-text {\n  margin: 0;\n  text-transform: capitalize;\n}", "",{"version":3,"sources":["/Users/kww/work/jianguoyun/nutstore-webpages/js_nutflowy/src/utils/src/utils/Notification.scss","/Users/kww/work/jianguoyun/nutstore-webpages/js_nutflowy/src/utils/Notification.scss"],"names":[],"mappings":"AACE;EACE,+BAAA;CCAH;;ADGC;EACE,UAAA;EACA,2BAAA;CCAH","file":"Notification.scss","sourcesContent":["\n  .snackbar-container * {\n    font-weight: normal !important;\n  }\n\n  .snackbar-text {\n    margin: 0;\n    text-transform: capitalize;\n  }\n",".snackbar-container * {\n  font-weight: normal !important;\n}\n\n.snackbar-text {\n  margin: 0;\n  text-transform: capitalize;\n}"],"sourceRoot":""}]);
+
