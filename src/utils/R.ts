@@ -1,5 +1,22 @@
 // R 代表的是 React
-import { useCallback, useEffect } from 'react';
+
+import { RefObject, useCallback, useEffect } from 'react'
+import { ConnectedComponentClass } from 'react-redux'
+
+export { RefObject } from 'react'
+
+export type Connector<P = any> = (
+  Component: React.ComponentType<P>,
+) => ConnectedComponentClass<React.ComponentType<P>, P>
+
+export interface ForwardingRef<T> extends RefObject<T> {
+  (instance: T | null): any
+}
+
+export type CallbackFef<V> = (instance: V | null) => any
+
+export type Ref<V> = null | CallbackFef<V> | RefObject<V> | ForwardingRef<V>
+
 /**
  * 这个函数用来给 React 的 ref 属性传值
  *
@@ -9,23 +26,25 @@ import { useCallback, useEffect } from 'react';
  *   要写成 (RefObject as any).current = xxx ，很麻烦，而且也不安全（我们
  *   要压缩 any 出现的数量）
  */
-export function assignRef(refValue, ref) {
-    if (typeof ref === 'function') {
-        ref(refValue);
-    }
-    if (ref && 'current' in ref) {
-        ;
-        ref.current = refValue;
-    }
+export function assignRef<V>(refValue: V | null, ref: Ref<V> | undefined) {
+  if (typeof ref === 'function') {
+    ref(refValue)
+  }
+
+  if (ref && 'current' in ref) {
+    ;(ref as any).current = refValue
+  }
 }
+
 /**
  * 接收若干 refs 然后生成一个新的 React.Ref ，收到的值会代理到所有接收的 refs
  */
-export function forwardRefs(...refs) {
-    return (instance) => {
-        refs.forEach((ref) => assignRef(instance, ref));
-    };
+export function forwardRefs<V>(...refs: (Ref<V> | undefined)[]) {
+  return (instance: V | null) => {
+    refs.forEach((ref) => assignRef(instance, ref))
+  }
 }
+
 /**
  * 创建一个能代理 instance 给其他 ref 的 Ref
  *
@@ -58,32 +77,48 @@ class Example extends PureComponent {
 }
 ```
  */
-export function createForwardingRef(relayer) {
-    function forwardingRef(instance) {
-        relayer(instance);
-        forwardingRef.current = instance;
-    }
-    forwardingRef.current = null;
-    return forwardingRef;
+export function createForwardingRef<T>(
+  relayer: CallbackFef<T>,
+): ForwardingRef<T> {
+  function forwardingRef(instance: T | null) {
+    relayer(instance)
+    forwardingRef.current = instance
+  }
+
+  forwardingRef.current = null as T | null
+
+  return forwardingRef as any
 }
-export const ConcurrentMode = React
-    .unstable_ConcurrentMode;
-export const useDocumentEvent = (type, listener, options = {}) => {
-    const bind = useCallback(() => {
-        document.addEventListener(type, listener, options);
-    }, [type, listener, options]);
-    const unbind = useCallback(() => {
-        document.removeEventListener(type, listener, options);
-    }, [type, listener, options]);
-    const { autoBinding = true } = options;
-    useEffect(() => {
-        if (!autoBinding)
-            return;
-        bind();
-        return unbind;
-    }, [bind, unbind, autoBinding]);
-    return {
-        bind,
-        unbind,
-    };
-};
+
+export const ConcurrentMode: React.ComponentClass = (React as any)
+  .unstable_ConcurrentMode
+
+export const useDocumentEvent = <K extends keyof DocumentEventMap>(
+  type: keyof DocumentEventMap,
+  listener: (event: DocumentEventMap[K]) => any,
+  options: Parameters<Document['addEventListener']>[2] & {
+    /** autoBinding 默认为 true */
+    autoBinding?: boolean
+  } = {},
+) => {
+  const bind = useCallback(() => {
+    document.addEventListener(type, listener, options)
+  }, [type, listener, options])
+
+  const unbind = useCallback(() => {
+    document.removeEventListener(type, listener, options)
+  }, [type, listener, options])
+
+  const { autoBinding = true } = options
+  useEffect(() => {
+    if (!autoBinding) return
+
+    bind()
+    return unbind
+  }, [bind, unbind, autoBinding])
+
+  return {
+    bind,
+    unbind,
+  }
+}

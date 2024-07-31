@@ -37,170 +37,241 @@
  * * 如果不存在的话，那就检查 state 中的 `backwardState` 里是否有修改历史，有
  *   的话就把整个 state 回退到对应版本
  */
-import { createStandardAction, isOfType } from 'typesafe-actions';
-import { produce } from 'immer';
-import { mergeMap as mergeMap$ } from 'rxjs/operators';
-import { Notification } from '../utils/Notification';
-import { $t } from '../i18n';
-import * as RX from '../utils/RX';
-import { getEditingNodeId } from './project_node/selectors';
-import { redoEditorState, redoEditorStateAvailable, } from './node_edit/redo_editor_state';
-import { undoEditorState, undoEditorStateAvailable, } from './node_edit/undo_editor_state';
-import { ActionTypes as FileActionTypes } from './file';
-import { omit } from 'lodash';
-export var ActionTypes;
-(function (ActionTypes) {
-    ActionTypes["init"] = "file_history:init";
-    ActionTypes["undo"] = "edit_history:undo";
-    ActionTypes["undoPerform"] = "edit_history:undo:perform";
-    ActionTypes["redo"] = "edit_history:redo";
-    ActionTypes["redoPerform"] = "edit_history:redo:perform";
-})(ActionTypes || (ActionTypes = {}));
-export const actionCreators = {
-    init: createStandardAction(ActionTypes.init)(),
-    undo: createStandardAction(ActionTypes.undo)(),
-    undoPerform: createStandardAction(ActionTypes.undoPerform)(),
-    redo: createStandardAction(ActionTypes.redo)(),
-    redoPerform: createStandardAction(ActionTypes.redoPerform)(),
-};
-export var selectors;
-(function (selectors) {
-    selectors.undoAvailable = (state) => {
-        const editingNodeId = getEditingNodeId(state);
-        if (editingNodeId && undoEditorStateAvailable(editingNodeId, state)) {
-            return true;
-        }
-        return Boolean(state.fileHistory?.length && state.historyIndex);
-    };
-    selectors.redoAvailable = (state) => {
-        const editingNodeId = getEditingNodeId(state);
-        if (editingNodeId && redoEditorStateAvailable(editingNodeId, state)) {
-            return true;
-        }
-        return Boolean(state.fileHistory?.length &&
-            state.historyIndex !== undefined &&
-            state.fileHistory.length > state.historyIndex + 1);
-    };
-})(selectors || (selectors = {}));
-export const reducer = (state, action) => {
-    switch (action.type) {
-        case ActionTypes.init: {
-            return {
-                ...state,
-                fileHistory: [
-                    {
-                        triggerAction: action,
-                        state,
-                    },
-                ],
-                historyIndex: 0,
-            };
-        }
-        case ActionTypes.undoPerform: {
-            if (!selectors.undoAvailable(state))
-                return state;
-            const editingNodeId = getEditingNodeId(state);
-            if (editingNodeId) {
-                let isUndoSucceed = false;
-                state = produce(state, state => {
-                    isUndoSucceed = undoEditorState(editingNodeId, state);
-                });
-                if (isUndoSucceed)
-                    return state;
-            }
-            if (!state.fileHistory || state.historyIndex === undefined)
-                return state;
-            return {
-                ...state.fileHistory[state.historyIndex - 1].state,
-                fileHistory: state.fileHistory,
-                historyIndex: state.historyIndex - 1,
-            };
-        }
-        case ActionTypes.redoPerform: {
-            if (!selectors.redoAvailable(state))
-                return state;
-            const editingNodeId = getEditingNodeId(state);
-            if (editingNodeId) {
-                let isRedoSucceed = false;
-                state = produce(state, state => {
-                    isRedoSucceed = redoEditorState(editingNodeId, state);
-                });
-                if (isRedoSucceed)
-                    return state;
-            }
-            if (!state.fileHistory || state.historyIndex === undefined)
-                return state;
-            return {
-                ...state.fileHistory[state.historyIndex + 1].state,
-                fileHistory: state.fileHistory,
-                historyIndex: state.historyIndex + 1,
-            };
-        }
-    }
-    return state;
-};
-export const wrapStateMutator = (undoableActionPredicates, stateMutator) => (state, action) => {
-    const mutatedState = produce(state => stateMutator(state, action))(state);
-    const matchedPredicate = undoableActionPredicates.find(p => typeof p === 'string' ? p === action.type : p(action, mutatedState, state));
-    if (!matchedPredicate)
-        return mutatedState;
-    const triggerAction = { ...action };
-    if (process.env.NODE_ENV !== 'development') {
-        delete triggerAction.payload;
-    }
-    const currentHistory = state.fileHistory || [
-        { state: omit(state, ['imageUploadModalStatus']), triggerAction },
-    ];
-    const currentHistoryIndex = state.historyIndex || 0;
-    const newHistory = [
-        ...currentHistory.slice(0, currentHistoryIndex + 1),
-        {
-            state: omit(mutatedState, ['imageUploadModalStatus']),
-            triggerAction,
-        },
-    ];
-    const finalState = {
-        ...mutatedState,
-        fileHistory: newHistory,
-        historyIndex: currentHistoryIndex + 1,
-    };
-    return compressHistory('fileHistory', finalState);
-};
-export const epic = (action$, state$) => action$.pipe(mergeMap$(RX.create((observer, action) => {
-    if (isOfType(FileActionTypes.fetchedFile, action)) {
-        observer.next(actionCreators.init());
-    }
-    if (isOfType(ActionTypes.undo, action)) {
-        if (selectors.undoAvailable(state$.value)) {
-            observer.next(actionCreators.undoPerform());
-            Notification.show({ text: $t('NUTFLOWY_UNDO_COMPLETED') });
-        }
-    }
-    else if (isOfType(ActionTypes.redo, action)) {
-        if (selectors.redoAvailable(state$.value)) {
-            observer.next(actionCreators.redoPerform());
-            Notification.show({ text: $t('NUTFLOWY_REDO_COMPLETED') });
-        }
-    }
-    observer.complete();
-})));
-export function sanitizeStateInReduxDevtools(state) {
-    return {
-        ...state,
-        '...': '<filtered>',
-        fileHistory: state.fileHistory,
-    };
+
+import { createStandardAction, ActionType, isOfType } from 'typesafe-actions'
+import { produce } from 'immer'
+import { AnyAction } from 'redux'
+import { Epic } from '../types'
+import { mergeMap as mergeMap$ } from 'rxjs/operators'
+import { Notification } from '../utils/Notification'
+import { $t } from '../i18n'
+import * as RX from '../utils/RX'
+import { State as NodeEditState } from './node_edit'
+import { State as ProjectNodeState } from './project_node'
+import { getEditingNodeId } from './project_node/selectors'
+import {
+  redoEditorState,
+  redoEditorStateAvailable,
+} from './node_edit/redo_editor_state'
+import {
+  undoEditorState,
+  undoEditorStateAvailable,
+} from './node_edit/undo_editor_state'
+import { ActionTypes as FileActionTypes } from './file'
+import { omit } from 'lodash'
+
+export type Actions = ActionType<typeof actionCreators>
+
+interface HistoryRecord {
+  triggerAction: any
+  state: State
 }
-const HISTORY_LIMIT = 100;
-function compressHistory(type, state) {
-    if (!state[type])
-        return state;
-    const fileHistories = state[type];
-    if (fileHistories.length <= HISTORY_LIMIT)
-        return state;
-    return {
+
+export interface State {
+  fileHistory?: HistoryRecord[]
+  historyIndex?: number
+}
+
+export enum ActionTypes {
+  init = 'file_history:init',
+  undo = 'edit_history:undo',
+  undoPerform = 'edit_history:undo:perform',
+  redo = 'edit_history:redo',
+  redoPerform = 'edit_history:redo:perform',
+}
+
+export const actionCreators = {
+  init: createStandardAction(ActionTypes.init)(),
+  undo: createStandardAction(ActionTypes.undo)(),
+  undoPerform: createStandardAction(ActionTypes.undoPerform)(),
+  redo: createStandardAction(ActionTypes.redo)(),
+  redoPerform: createStandardAction(ActionTypes.redoPerform)(),
+}
+
+export namespace selectors {
+  export const undoAvailable = (state: State & ProjectNodeState) => {
+    const editingNodeId = getEditingNodeId(state)
+
+    if (editingNodeId && undoEditorStateAvailable(editingNodeId, state)) {
+      return true
+    }
+
+    return Boolean(state.fileHistory?.length && state.historyIndex)
+  }
+
+  export const redoAvailable = (state: State & ProjectNodeState) => {
+    const editingNodeId = getEditingNodeId(state)
+
+    if (editingNodeId && redoEditorStateAvailable(editingNodeId, state)) {
+      return true
+    }
+
+    return Boolean(
+      state.fileHistory?.length &&
+        state.historyIndex !== undefined &&
+        state.fileHistory.length > state.historyIndex + 1,
+    )
+  }
+}
+
+export const reducer = (
+  state: State & ProjectNodeState,
+  action: Actions,
+): State => {
+  switch (action.type) {
+    case ActionTypes.init: {
+      return {
         ...state,
-        fileHistory: fileHistories.slice(fileHistories.length - HISTORY_LIMIT, fileHistories.length),
-        historyIndex: HISTORY_LIMIT - 1,
-    };
+        fileHistory: [
+          {
+            triggerAction: action,
+            state,
+          },
+        ],
+        historyIndex: 0,
+      }
+    }
+    case ActionTypes.undoPerform: {
+      if (!selectors.undoAvailable(state)) return state
+
+      const editingNodeId = getEditingNodeId(state)
+
+      if (editingNodeId) {
+        let isUndoSucceed = false
+        state = produce(state, state => {
+          isUndoSucceed = undoEditorState(
+            editingNodeId,
+            state as State & ProjectNodeState & NodeEditState,
+          )
+        })
+        if (isUndoSucceed) return state
+      }
+
+      if (!state.fileHistory || state.historyIndex === undefined) return state
+
+      return {
+        ...state.fileHistory[state.historyIndex - 1].state,
+        fileHistory: state.fileHistory,
+        historyIndex: state.historyIndex - 1,
+      }
+    }
+    case ActionTypes.redoPerform: {
+      if (!selectors.redoAvailable(state)) return state
+
+      const editingNodeId = getEditingNodeId(state)
+
+      if (editingNodeId) {
+        let isRedoSucceed = false
+        state = produce(state, state => {
+          isRedoSucceed = redoEditorState(
+            editingNodeId,
+            state as State & ProjectNodeState & NodeEditState,
+          )
+        })
+        if (isRedoSucceed) return state
+      }
+
+      if (!state.fileHistory || state.historyIndex === undefined) return state
+
+      return {
+        ...state.fileHistory[state.historyIndex + 1].state,
+        fileHistory: state.fileHistory,
+        historyIndex: state.historyIndex + 1,
+      }
+    }
+  }
+
+  return state
+}
+
+export type UndoableActionPredicate<A extends AnyAction, S> =
+  | string
+  | ((action: A, newState: S, oldState: S) => boolean)
+
+export const wrapStateMutator = <S, A extends AnyAction>(
+  undoableActionPredicates: UndoableActionPredicate<A, S>[],
+  stateMutator: (state: S, action: A) => S | void,
+) => (state: S & State, action: A) => {
+  const mutatedState = produce<S & State>(state =>
+    stateMutator(state as S, action),
+  )(state)
+
+  const matchedPredicate = undoableActionPredicates.find(p =>
+    typeof p === 'string' ? p === action.type : p(action, mutatedState, state),
+  )
+
+  if (!matchedPredicate) return mutatedState
+
+  const triggerAction = { ...action }
+  if (process.env.NODE_ENV !== 'development') {
+    delete triggerAction.payload
+  }
+
+  const currentHistory = state.fileHistory || [
+    { state: omit(state, ['imageUploadModalStatus']), triggerAction },
+  ]
+  const currentHistoryIndex = state.historyIndex || 0
+  const newHistory = [
+    ...currentHistory.slice(0, currentHistoryIndex + 1),
+    {
+      state: omit(mutatedState, ['imageUploadModalStatus']),
+      triggerAction,
+    },
+  ]
+
+  const finalState: S & State = {
+    ...mutatedState,
+    fileHistory: newHistory,
+    historyIndex: currentHistoryIndex + 1,
+  }
+  return compressHistory('fileHistory', finalState)
+}
+
+export const epic: Epic<State, Actions> = (action$, state$) =>
+  action$.pipe(
+    mergeMap$(
+      RX.create((observer, action) => {
+        if (isOfType(FileActionTypes.fetchedFile, action)) {
+          observer.next(actionCreators.init())
+        }
+        if (isOfType(ActionTypes.undo, action)) {
+          if (selectors.undoAvailable(state$.value)) {
+            observer.next(actionCreators.undoPerform())
+            Notification.show({ text: $t('NUTFLOWY_UNDO_COMPLETED') })
+          }
+        } else if (isOfType(ActionTypes.redo, action)) {
+          if (selectors.redoAvailable(state$.value)) {
+            observer.next(actionCreators.redoPerform())
+            Notification.show({ text: $t('NUTFLOWY_REDO_COMPLETED') })
+          }
+        }
+        observer.complete()
+      }),
+    ),
+  )
+
+export function sanitizeStateInReduxDevtools<S extends State>(state: S): S {
+  return {
+    ...state,
+    '...': '<filtered>',
+    fileHistory: state.fileHistory,
+  }
+}
+
+const HISTORY_LIMIT = 100
+function compressHistory<T extends keyof State>(type: T, state: State) {
+  if (!state[type]) return state
+
+  const fileHistories = state[type] as HistoryRecord[]
+
+  if (fileHistories.length <= HISTORY_LIMIT) return state
+
+  return {
+    ...state,
+    fileHistory: fileHistories.slice(
+      fileHistories.length - HISTORY_LIMIT,
+      fileHistories.length,
+    ),
+    historyIndex: HISTORY_LIMIT - 1,
+  }
 }

@@ -1,4 +1,12 @@
-import * as React from 'react';
-export const SimpleTip = props => {
-    return (React.createElement("div", { title: props.message }, props.children));
-};
+import * as React from 'react'
+
+export interface SimpleTipProps {
+  message: string
+  children: React.ReactNode
+}
+
+export const SimpleTip: React.FunctionComponent<SimpleTipProps> = props => {
+  return (
+    <div title={props.message}>{props.children}</div>
+  )
+}

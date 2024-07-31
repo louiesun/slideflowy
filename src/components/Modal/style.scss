@@ -1,0 +1,8 @@
+// Imports
+import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
+import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
+var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".Modal__html--visible #root{will-change:opacity}.Modal__backdrop,.Modal__body{position:fixed}.Modal__backdrop{top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.2)}", "",{"version":3,"sources":["webpack://./src/components/Modal/style.scss"],"names":[],"mappings":"AAKA,4BACE,mBAAA,CAGF,8BAEE,cAAA,CAEF,iBACE,KAAA,CACA,OAAA,CACA,QAAA,CACA,MAAA,CACA,yBAAA","sourcesContent":["// 当模态对话框打开的时候，给程序的根元素创建一个层叠上下文，这样模态对话框的\n// portal 就不会被程序主体设置了 z-index 的元素给盖住了（比如 AppHeader）\n//\n// 不能给 #root 用 transform: scale(1) ，这会导致顶栏的 position: fixed 跟随效\n// 果失效，变成类似 static 的效果\n.Modal__html--visible #root {\n  will-change: opacity;\n}\n\n.Modal__backdrop,\n.Modal__body {\n  position: fixed;\n}\n.Modal__backdrop {\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background: rgb(0, 0, 0, 0.2);\n}\n"],"sourceRoot":""}]);
+// Exports
+export default ___CSS_LOADER_EXPORT___;

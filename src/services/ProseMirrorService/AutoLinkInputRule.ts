@@ -1,8 +1,9 @@
-import { Plugin } from 'prosemirror-state';
-import { Fragment, Slice } from 'prosemirror-model';
-import { endlessReplace } from '../../utils/S';
-import { $t } from '../../i18n';
-import { schema } from 'prosemirror-schema-basic';
+import { Plugin, Transaction, EditorState, Selection } from 'prosemirror-state'
+import { Fragment, Node, Slice } from 'prosemirror-model'
+import { endlessReplace } from '../../utils/S'
+import { $t } from '../../i18n'
+import { schema } from 'prosemirror-schema-basic'
+
 /**
  * URI 的标准 RFC3986 : https://tools.ietf.org/html/rfc3986#appendix-A
  *
@@ -67,150 +68,215 @@ telnet://192.0.2.16:80/
 urn:oasis:names:specification:docbook:dtd:xml:4.1.2
  *
  */
-const LINK_RE = /([A-Za-z][A-Za-z0-9+-.:]*:(?:\/\/)?(?:[\-;.:&=+$,\w]+@)?[A-Za-z0-9+\-.:\[\]]+|[A-Za-z0-9+\-.:]*:\/\/|www\.[A-Za-z0-9\.\-]+(?::\d)?)((?:\/[\+~%\/\.\w\-_]*)?[?\-\+=&;%@\/\.\w_]*#?[\.\!\/\\\w]*)?/;
-export const autoLinkAttrMark = 'data-ns-from-auto-link';
+const LINK_RE = /([A-Za-z][A-Za-z0-9+-.:]*:(?:\/\/)?(?:[\-;.:&=+$,\w]+@)?[A-Za-z0-9+\-.:\[\]]+|[A-Za-z0-9+\-.:]*:\/\/|www\.[A-Za-z0-9\.\-]+(?::\d)?)((?:\/[\+~%\/\.\w\-_]*)?[?\-\+=&;%@\/\.\w_]*#?[\.\!\/\\\w]*)?/
+
+export const autoLinkAttrMark = 'data-ns-from-auto-link'
+
 export const autoLinkInputRulesPlugin = new Plugin({
-    /**
-     * 逻辑是每次 apply transaction 时，都把所有的 link 刷新一遍
-     */
-    appendTransaction(trs, oldState, newState) {
-        return generateTransaction(newState);
-    },
-    props: {
-        transformPasted: (slice, view) => {
-            const { schema } = view.state;
-            const newNodes = [];
-            slice.content.forEach(node => {
-                if (node.type.spec.code || !node.isBlock) {
-                    newNodes.push(node);
-                    return;
-                }
-                const matched = matchLink(node.textBetween(0, node.content.size, undefined, '\ufffc'), (match, previousEnd, startIndex) => {
-                    const fromPos = startIndex;
-                    const toPos = fromPos + match[0].length;
-                    if (fromPos !== 0) {
-                        newNodes.push(schema.text(node.textContent.slice(0, fromPos)));
-                    }
-                    const href = match[0].startsWith('www.')
-                        ? `http://${match[0]}`
-                        : match[0];
-                    const linkNode = schema.text($t('WEB_LINK'), [
-                        schema.marks.link.create({
-                            href,
-                            [autoLinkAttrMark]: false,
-                        }),
-                    ]);
-                    newNodes.push(linkNode);
-                    if (toPos < node.content.size - 1) {
-                        newNodes.push(schema.text(node.textContent.slice(toPos)));
-                    }
-                });
-                if (matched === null) {
-                    newNodes.push(node);
-                }
-            });
-            return Slice.maxOpen(Fragment.fromArray(newNodes));
-        },
-    },
-});
-function generateTransaction(state) {
-    const { tr } = state;
-    state.doc.descendants((node, pos) => {
-        if (node.type.spec.code)
-            return;
-        if (!node.isBlock)
-            return;
-        // Block Node 的开标签占一个位置
-        const contentStartPos = pos + 1;
-        // 移除所有现有的 link mark
-        node.descendants((node, pos) => {
-            removeLinkMark(contentStartPos + pos, node, state, tr);
-        });
-        // 重新检索并应用一遍 link mark
-        matchLink(node.textBetween(0, node.content.size, undefined, '\ufffc'), (match, previousEnd, startIndex) => {
-            applyLinkMark(contentStartPos, match, startIndex, state, tr);
-        });
-    });
-    return tr;
-}
-function applyLinkMark(nodePos, match, linkStartIndex, state, tr) {
-    const matchStartPos = nodePos + linkStartIndex;
-    const fromPos = tr.mapping.map(matchStartPos);
-    const toPos = tr.mapping.map(matchStartPos + match[0].length);
-    const { link: linkMarkType } = state.doc.type.schema.marks;
-    // 当要添加链接的内容里存在不是由 AutoLinkInputRule 插件添加的链接
-    // 时，就不进行下一步了
-    let existManualLink = false;
-    state.doc.nodesBetween(fromPos, toPos, (node, pos) => {
-        const linkMark = node.marks.find(m => m.type === linkMarkType);
-        if (linkMark && !linkMark.attrs[autoLinkAttrMark]) {
-            existManualLink = true;
-            return false;
+  /**
+   * 逻辑是每次 apply transaction 时，都把所有的 link 刷新一遍
+   */
+  appendTransaction(this: Plugin, trs, oldState, newState) {
+    return generateTransaction(newState)
+  },
+
+  props: {
+    transformPasted: (slice, view) => {
+      const { schema } = view.state
+      const newNodes: Node[] = []
+      slice.content.forEach(node => {
+        if (node.type.spec.code || !node.isBlock) {
+          newNodes.push(node)
+          return
         }
-        return;
-    });
-    if (existManualLink)
-        return;
-    const href = match[0].startsWith('www.') ? `http://${match[0]}` : match[0];
-    tr.addMark(fromPos, toPos, state.doc.type.schema.marks.link.create({
-        href,
-        [autoLinkAttrMark]: true,
-    }));
-}
-function removeLinkMark(nodePos, node, state, tr) {
-    const { link: linkMarkType } = state.doc.type.schema.marks;
-    const linkMark = node.marks.find(m => m.type === linkMarkType && m.attrs[autoLinkAttrMark]);
-    if (linkMark) {
-        tr.removeMark(nodePos, nodePos + node.nodeSize, linkMark);
-    }
-}
-function matchLink(textContent, callback) {
-    callback = callback || (() => { });
-    let lastMatch = null;
-    let lastEnd = 0;
-    let match = null;
-    // 获取最后一个匹配
-    // tslint:disable-next-line:no-conditional-assignment
-    while ((match = LINK_RE.exec(textContent))) {
-        callback(match, lastEnd, lastEnd + match.index);
-        lastMatch = match;
-        lastEnd += lastMatch.index + lastMatch[0].length;
-        textContent = textContent.slice(lastMatch.index + lastMatch[0].length);
-    }
-    return !lastMatch
-        ? null
-        : {
-            match: lastMatch[0],
-            start: lastEnd - lastMatch[0].length,
-            end: lastEnd,
-        };
-}
-export function processLinkInContent(content) {
-    return endlessReplace(LINK_RE, (match, stepStr) => {
-        console.log(match, stepStr);
-        const href = match[0].startsWith('www.') ? `http://${match[0]}` : match[0];
-        return `<a href="${href}" ${autoLinkAttrMark}="false" target="_blank">${$t('WEB_LINK')}</a>`;
-    }, content);
-}
-export function getLinkInfoBySelection(selection) {
-    if (selection.head !== selection.anchor)
-        return;
-    const anchor = selection.$anchor;
-    const before = anchor.parent.childBefore(anchor.parentOffset);
-    const after = anchor.parent.childAfter(anchor.parentOffset);
-    const getMarkInfo = (child) => {
-        if (!child.node)
-            return null;
-        const linkMark = child.node.marks.find(mark => mark.type.name === schema.marks.link.name);
-        return linkMark
-            ? {
-                anchor: anchor.start() + child.offset,
-                head: child.offset + child.node.nodeSize + 1,
-                text: child.node.textContent,
-                // tslint:disable-next-line:no-string-literal
-                link: linkMark.attrs['href'],
+
+        const matched = matchLink(
+          node.textBetween(0, node.content.size, undefined, '\ufffc'),
+          (match, previousEnd, startIndex) => {
+            const fromPos = startIndex
+            const toPos = fromPos + match[0].length
+
+            if (fromPos !== 0) {
+              newNodes.push(schema.text(node.textContent.slice(0, fromPos)))
             }
-            : null;
-    };
-    return getMarkInfo(before) || getMarkInfo(after);
+
+            const href = match[0].startsWith('www.')
+              ? `http://${match[0]}`
+              : match[0]
+            const linkNode = schema.text($t('WEB_LINK'), [
+              schema.marks.link.create({
+                href,
+                [autoLinkAttrMark]: false,
+              }),
+            ])
+
+            newNodes.push(linkNode)
+            if (toPos < node.content.size - 1) {
+              newNodes.push(schema.text(node.textContent.slice(toPos)))
+            }
+          },
+        )
+
+        if (matched === null) {
+          newNodes.push(node)
+        }
+      })
+      return Slice.maxOpen(Fragment.fromArray(newNodes))
+    },
+  },
+})
+
+function generateTransaction(state: EditorState) {
+  const { tr } = state
+  state.doc.descendants((node, pos) => {
+    if (node.type.spec.code) return
+    if (!node.isBlock) return
+
+    // Block Node 的开标签占一个位置
+    const contentStartPos = pos + 1
+
+    // 移除所有现有的 link mark
+    node.descendants((node, pos) => {
+      removeLinkMark(contentStartPos + pos, node, state, tr)
+    })
+
+    // 重新检索并应用一遍 link mark
+    matchLink(
+      node.textBetween(0, node.content.size, undefined, '\ufffc'),
+      (match, previousEnd, startIndex) => {
+        applyLinkMark(contentStartPos, match, startIndex, state, tr)
+      },
+    )
+  })
+  return tr
+}
+
+function applyLinkMark(
+  nodePos: number,
+  match: RegExpExecArray,
+  linkStartIndex: number,
+  state: EditorState,
+  tr: Transaction,
+) {
+  const matchStartPos = nodePos + linkStartIndex
+  const fromPos = tr.mapping.map(matchStartPos)
+  const toPos = tr.mapping.map(matchStartPos + match[0].length)
+  const { link: linkMarkType } = state.doc.type.schema.marks
+
+  // 当要添加链接的内容里存在不是由 AutoLinkInputRule 插件添加的链接
+  // 时，就不进行下一步了
+  let existManualLink = false
+  state.doc.nodesBetween(fromPos, toPos, (node, pos) => {
+    const linkMark = node.marks.find(m => m.type === linkMarkType)
+    if (linkMark && !linkMark.attrs[autoLinkAttrMark]) {
+      existManualLink = true
+      return false
+    }
+    return
+  })
+
+  if (existManualLink) return
+
+  const href = match[0].startsWith('www.') ? `http://${match[0]}` : match[0]
+
+  tr.addMark(
+    fromPos,
+    toPos,
+    state.doc.type.schema.marks.link.create({
+      href,
+      [autoLinkAttrMark]: true,
+    }),
+  )
+}
+
+function removeLinkMark(
+  nodePos: number,
+  node: Node,
+  state: EditorState,
+  tr: Transaction,
+) {
+  const { link: linkMarkType } = state.doc.type.schema.marks
+
+  const linkMark = node.marks.find(
+    m => m.type === linkMarkType && m.attrs[autoLinkAttrMark],
+  )
+
+  if (linkMark) {
+    tr.removeMark(nodePos, nodePos + node.nodeSize, linkMark)
+  }
+}
+
+function matchLink(
+  textContent: string,
+  callback?: (
+    match: RegExpExecArray,
+    previousEnd: number,
+    index: number,
+  ) => void,
+) {
+  callback = callback || (() => {})
+
+  let lastMatch: RegExpExecArray | null = null
+  let lastEnd = 0
+  let match: RegExpExecArray | null = null
+
+  // 获取最后一个匹配
+  // tslint:disable-next-line:no-conditional-assignment
+  while ((match = LINK_RE.exec(textContent))) {
+    callback(match, lastEnd, lastEnd + match.index)
+    lastMatch = match
+    lastEnd += lastMatch.index + lastMatch[0].length
+    textContent = textContent.slice(lastMatch.index + lastMatch[0].length)
+  }
+
+  return !lastMatch
+    ? null
+    : {
+        match: lastMatch[0],
+        start: lastEnd - lastMatch[0].length,
+        end: lastEnd,
+      }
+}
+
+export function processLinkInContent(content: string) {
+  return endlessReplace(
+    LINK_RE,
+    (match, stepStr) => {
+      console.log(match, stepStr)
+      const href = match[0].startsWith('www.') ? `http://${match[0]}` : match[0]
+      return `<a href="${href}" ${autoLinkAttrMark}="false" target="_blank">${$t(
+        'WEB_LINK',
+      )}</a>`
+    },
+    content,
+  )
+}
+
+export function getLinkInfoBySelection(selection: Selection) {
+  if (selection.head !== selection.anchor) return
+  const anchor = selection.$anchor
+  const before = anchor.parent.childBefore(anchor.parentOffset)
+  const after = anchor.parent.childAfter(anchor.parentOffset)
+
+  const getMarkInfo = (child: {
+    node: Node | null
+    index: number
+    offset: number
+  }) => {
+    if (!child.node) return null
+    const linkMark = child.node.marks.find(
+      mark => mark.type.name === schema.marks.link.name,
+    )
+    return linkMark
+      ? {
+          anchor: anchor.start() + child.offset,
+          head: child.offset + child.node.nodeSize + 1,
+          text: child.node.textContent,
+          // tslint:disable-next-line:no-string-literal
+          link: linkMark.attrs['href'],
+        }
+      : null
+  }
+
+  return getMarkInfo(before) || getMarkInfo(after)
 }
