@@ -1,8 +1,118 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".img-viewer{position:absolute;top:0;left:0;bottom:0;right:0;display:flex;flex-direction:row;align-items:center}.img-viewer-container{flex:1;z-index:2}.img-viewer-container img{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);max-width:100%;max-height:100%;opacity:0;transition:all ease-in-out 0s;object-fit:cover;user-select:none;-webkit-user-select:none;cursor:grab}.img-viewer-mask{position:absolute;top:0;left:0;bottom:0;right:0;background-color:rgba(0,0,0,.9);transition:opacity ease-in-out .3s;z-index:1}.img-viewer.show{opacity:1;pointer-events:auto}.img-viewer.show .img-viewer-mask{opacity:1;transition-duration:.3s}.img-viewer.hide{opacity:0;pointer-events:none}.img-viewer.hide .img-viewer-mask{opacity:0;transition-duration:0s}.img-viewer .close,.img-viewer .prev,.img-viewer .next{width:56px;height:56px;cursor:pointer;z-index:2;visibility:hidden}.img-viewer .close svg,.img-viewer .prev svg,.img-viewer .next svg{width:56px;height:56px}.img-viewer .close.visible,.img-viewer .prev.visible,.img-viewer .next.visible{visibility:visible}.img-viewer .close{position:absolute;top:20px;right:20px;visibility:visible !important}.img-viewer .prev{margin-left:23px}.img-viewer .next{margin-right:23px}.img-viewer .scale{position:absolute;bottom:24px;left:50%;transform:translate(-50%, 0);z-index:2;display:flex;align-items:center;justify-content:space-evenly;width:204px;height:56px;background:#1e1e1e;border-radius:8px}.img-viewer .scale .zoom-in,.img-viewer .scale .zoom-out,.img-viewer .scale .reset{width:24px;height:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}", "",{"version":3,"sources":["webpack://./src/components/Slide/ImageViewer.scss"],"names":[],"mappings":"AAAA,YAEE,iBAAA,CACA,KAAA,CACA,MAAA,CACA,QAAA,CACA,OAAA,CACA,YAAA,CACA,kBAAA,CACA,kBAAA,CAEA,sBACE,MAAA,CACA,SAAA,CAEA,0BACE,iBAAA,CACA,OAAA,CACA,QAAA,CACA,+BAAA,CACA,cAAA,CACA,eAAA,CACA,SAAA,CACA,6BAAA,CACA,gBAAA,CACA,gBAAA,CACA,wBAAA,CACA,WAAA,CAIJ,iBACE,iBAAA,CACA,KAAA,CACA,MAAA,CACA,QAAA,CACA,OAAA,CACA,+BAAA,CACA,kCAAA,CACA,SAAA,CAGF,iBACE,SAAA,CACA,mBAAA,CAEA,kCACE,SAAA,CACA,uBAAA,CAIJ,iBACE,SAAA,CACA,mBAAA,CAEA,kCACE,SAAA,CACA,sBAAA,CAIJ,uDACE,UAAA,CACA,WAAA,CACA,cAAA,CACA,SAAA,CACA,iBAAA,CAEA,mEACE,UAAA,CACA,WAAA,CAGF,+EACE,kBAAA,CAIJ,mBACE,iBAAA,CACA,QAAA,CACA,UAAA,CACA,6BAAA,CAGF,kBACE,gBAAA,CAGF,kBACE,iBAAA,CAGF,mBACE,iBAAA,CACA,WAAA,CACA,QAAA,CACA,4BAAA,CACA,SAAA,CACA,YAAA,CACA,kBAAA,CACA,4BAAA,CACA,WAAA,CACA,WAAA,CACA,kBAAA,CACA,iBAAA,CAEA,mFACE,UAAA,CACA,WAAA,CACA,cAAA,CACA,YAAA,CACA,kBAAA,CACA,sBAAA","sourcesContent":[".img-viewer {\n  $p: &;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n\n  &-container {\n    flex: 1;\n    z-index: 2;\n\n    img {\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      transform: translate(-50%, -50%);\n      max-width: 100%;\n      max-height: 100%;\n      opacity: 0;\n      transition: all ease-in-out 0s;\n      object-fit: cover;\n      user-select: none;\n      -webkit-user-select: none;\n      cursor: grab;\n    }\n  }\n\n  &-mask {\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    background-color: rgba(0, 0, 0, 0.9);\n    transition: opacity ease-in-out 0.3s;\n    z-index: 1;\n  }\n\n  &.show {\n    opacity: 1;\n    pointer-events: auto;\n\n    #{$p}-mask {\n      opacity: 1;\n      transition-duration: 0.3s;\n    }\n  }\n\n  &.hide {\n    opacity: 0;\n    pointer-events: none;\n\n    #{$p}-mask {\n      opacity: 0;\n      transition-duration: 0s;\n    }\n  }\n\n  .close, .prev, .next {\n    width: 56px;\n    height: 56px;\n    cursor: pointer;\n    z-index: 2;\n    visibility: hidden;\n\n    svg {\n      width: 56px;\n      height: 56px;\n    }\n\n    &.visible {\n      visibility: visible;\n    }\n  }\n\n  .close {\n    position: absolute;\n    top: 20px;\n    right: 20px;\n    visibility: visible !important;\n  }\n\n  .prev {\n    margin-left: 23px;\n  }\n\n  .next {\n    margin-right: 23px;\n  }\n\n  .scale {\n    position: absolute;\n    bottom: 24px;\n    left: 50%;\n    transform: translate(-50%, 0);\n    z-index: 2;\n    display: flex;\n    align-items: center;\n    justify-content: space-evenly;\n    width: 204px;\n    height: 56px;\n    background: #1e1e1e;\n    border-radius: 8px;\n\n    .zoom-in, .zoom-out, .reset {\n      width: 24px;\n      height: 24px;\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n  }\n}\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+.img-viewer {
+  $p: &;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &-container {
+    flex: 1;
+    z-index: 2;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 100%;
+      opacity: 0;
+      transition: all ease-in-out 0s;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: grab;
+    }
+  }
+
+  &-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: opacity ease-in-out 0.3s;
+    z-index: 1;
+  }
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+
+    #{$p}-mask {
+      opacity: 1;
+      transition-duration: 0.3s;
+    }
+  }
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+
+    #{$p}-mask {
+      opacity: 0;
+      transition-duration: 0s;
+    }
+  }
+
+  .close, .prev, .next {
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    z-index: 2;
+    visibility: hidden;
+
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+
+    &.visible {
+      visibility: visible;
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    visibility: visible !important;
+  }
+
+  .prev {
+    margin-left: 23px;
+  }
+
+  .next {
+    margin-right: 23px;
+  }
+
+  .scale {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 204px;
+    height: 56px;
+    background: #1e1e1e;
+    border-radius: 8px;
+
+    .zoom-in, .zoom-out, .reset {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

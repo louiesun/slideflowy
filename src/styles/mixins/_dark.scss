@@ -1,0 +1,15 @@
+$dark-bg-color: #333;
+$dark-font-color: #9094a0;
+$dark-hover-bg-color: #464646;
+$dark-border-color: #464646;
+$dark-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+$dark-divider-color: $dark-font-color;
+
+@mixin dark-theme {
+    --bg-color: #{$dark-bg-color};
+    --font-color: #{$dark-font-color};
+    --hover-bg-color: #{$dark-hover-bg-color};
+    --border-color: #{$dark-border-color};
+    --box-shadow: #{$dark-box-shadow};
+    --divider-color: #{$dark-divider-color};
+}

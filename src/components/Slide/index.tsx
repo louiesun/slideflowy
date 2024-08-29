@@ -226,6 +226,8 @@ export class Slide extends React.Component<{}, IState> {
       setBG,
     } = this
 
+    document.title = this.state.fileName
+
     return (
       <div>
         <div

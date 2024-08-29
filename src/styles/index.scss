@@ -1,10 +1,36 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../node_modules/css-loader/dist/runtime/api.js";
-import ___CSS_LOADER_AT_RULE_IMPORT_0___ from "-!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!../../node_modules/normalize.css/normalize.css";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-___CSS_LOADER_EXPORT___.i(___CSS_LOADER_AT_RULE_IMPORT_0___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".icon-rotate-0{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg)}.icon-rotate-90{-webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-ms-transform:rotate(90deg);-o-transform:rotate(90deg);transform:rotate(90deg)}.icon-rotate-180{-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg)}.icon-rotate-270{-webkit-transform:rotate(270deg);-moz-transform:rotate(270deg);-ms-transform:rotate(270deg);-o-transform:rotate(270deg);transform:rotate(270deg)}.icon-spin{-webkit-animation:spin 2s infinite linear;-moz-animation:spin 2s infinite linear;-o-animation:spin 2s infinite linear;animation:spin 2s infinite linear;animation-direction:reverse}@-moz-keyframes spin{0%{-moz-transform:rotate(0deg)}100%{-moz-transform:rotate(359deg)}}@-webkit-keyframes spin{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(359deg)}}@-o-keyframes spin{0%{-o-transform:rotate(0deg)}100%{-o-transform:rotate(359deg)}}@-ms-keyframes spin{0%{-ms-transform:rotate(0deg)}100%{-ms-transform:rotate(359deg)}}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(359deg)}}*{box-sizing:border-box}html,body{margin:0;padding:0;font-size:16px;font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\";line-height:1.5;background:#fff}#root{padding-left:calc(100vw - 100%)}:focus:not(:focus-visible){outline:0}", "",{"version":3,"sources":["webpack://./src/styles/index.scss","webpack://./src/styles/_icon.scss","webpack://./src/styles/_variables.scss"],"names":[],"mappings":"AAAQ,eCCN,8BAAA,CACA,2BAAA,CACA,0BAAA,CACA,yBAAA,CACA,sBAAA,CAGF,gBACE,+BAAA,CACA,4BAAA,CACA,2BAAA,CACA,0BAAA,CACA,uBAAA,CAGF,iBACE,gCAAA,CACA,6BAAA,CACA,4BAAA,CACA,2BAAA,CACA,wBAAA,CAGF,iBACE,gCAAA,CACA,6BAAA,CACA,4BAAA,CACA,2BAAA,CACA,wBAAA,CAWF,WACE,yCAAA,CACA,sCAAA,CACA,oCAAA,CACA,iCAAA,CACA,2BAAA,CAGF,qBACE,GACE,2BAAA,CAEF,KACE,6BAAA,CAAA,CAGJ,wBACE,GACE,8BAAA,CAEF,KACE,gCAAA,CAAA,CAGJ,mBACE,GACE,yBAAA,CAEF,KACE,2BAAA,CAAA,CAGJ,oBACE,GACE,0BAAA,CAEF,KACE,4BAAA,CAAA,CAGJ,gBACE,GACE,sBAAA,CAEF,KACE,wBAAA,CAAA,CDjFJ,EACE,qBAAA,CAGF,UAEE,QAAA,CACA,SAAA,CACA,cEZU,CFaV,gJEVY,CFWZ,eERY,CFSZ,eAAA,CAGF,MAGE,+BAAA,CAKF,2BACE,SAAA","sourcesContent":["@import '../../node_modules/normalize.css/normalize.css';\n@import './variables';\n@import './icon';\n\n* {\n  box-sizing: border-box;\n}\n\nhtml,\nbody {\n  margin: 0;\n  padding: 0;\n  font-size: $font-size;\n  font-family: $font-family;\n  line-height: $line-height;\n  background: #fff;\n}\n\n#root {\n  // 防止滚动条的出现/消失导致内容跳动\n  // https://www.zhangxinxu.com/wordpress/2015/01/css-page-scrollbar-toggle-center-no-jumping/\n  padding-left: calc(100vw - 100%);\n}\n\n// 所有按钮和 tabindex 元素，除了输入框（包括 contenteditable ）以外\n// 由非键盘事件导致获得焦点时，不显示 outline\n:focus:not(:focus-visible) {\n  outline: 0;\n}\n",".icon-rotate-0 {\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -ms-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n}\n\n.icon-rotate-90 {\n  -webkit-transform: rotate(90deg);\n  -moz-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  -o-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n\n.icon-rotate-180 {\n  -webkit-transform: rotate(180deg);\n  -moz-transform: rotate(180deg);\n  -ms-transform: rotate(180deg);\n  -o-transform: rotate(180deg);\n  transform: rotate(180deg);\n}\n\n.icon-rotate-270 {\n  -webkit-transform: rotate(270deg);\n  -moz-transform: rotate(270deg);\n  -ms-transform: rotate(270deg);\n  -o-transform: rotate(270deg);\n  transform: rotate(270deg);\n}\n\nsvg[class^='icon-'],\nsvg[class*=' icon-'] {\n}\n\n// 如果在 Chrome 上没有滚动，这是 Chrome 的 `Enable experimental Web Platform features`\n// flag 的一个 bug ，具体可以参考：\n//   https://github.com/FortAwesome/Font-Awesome/issues/2490\n//   https://code.google.com/p/chromium/issues/detail?id=331261\n.icon-spin {\n  -webkit-animation: spin 2s infinite linear;\n  -moz-animation: spin 2s infinite linear;\n  -o-animation: spin 2s infinite linear;\n  animation: spin 2s infinite linear;\n  animation-direction: reverse;\n}\n\n@-moz-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg);\n  }\n  100% {\n    -moz-transform: rotate(359deg);\n  }\n}\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(359deg);\n  }\n}\n@-o-keyframes spin {\n  0% {\n    -o-transform: rotate(0deg);\n  }\n  100% {\n    -o-transform: rotate(359deg);\n  }\n}\n@-ms-keyframes spin {\n  0% {\n    -ms-transform: rotate(0deg);\n  }\n  100% {\n    -ms-transform: rotate(359deg);\n  }\n}\n@keyframes spin {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(359deg);\n  }\n}\n","$font-size: 16px;\n$font-size-small: $font-size - 2px;\n\n$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,\n  Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n\n$line-height: 1.5;\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+@import '../../node_modules/normalize.css/normalize.css';
+@import './variables';
+@import './icon';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: $font-size;
+  font-family: $font-family;
+  line-height: $line-height;
+  background: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: $dark-bg-color;
+  }
+}
+
+#root {
+  // 防止滚动条的出现/消失导致内容跳动
+  // https://www.zhangxinxu.com/wordpress/2015/01/css-page-scrollbar-toggle-center-no-jumping/
+  padding-left: calc(100vw - 100%);
+}
+
+// 所有按钮和 tabindex 元素，除了输入框（包括 contenteditable ）以外
+// 由非键盘事件导致获得焦点时，不显示 outline
+:focus:not(:focus-visible) {
+  outline: 0;
+}

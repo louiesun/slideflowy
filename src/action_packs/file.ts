@@ -482,7 +482,7 @@ export const foreignSaveDraftEpic: Epic<State, Actions> = (action$, state$) =>
     }),
   )
 
-export const saveFileEpic: Epic<State, Actions> = (action$, state$) =>
+export const saveFileEpic: Epic<State & ProjectNodeState & SlideState, Actions> = (action$, state$) =>
   action$.pipe(
     filter$(isOfType(ActionTypes.saveFile)),
     mergeMap$(
@@ -498,7 +498,7 @@ export const saveFileEpic: Epic<State, Actions> = (action$, state$) =>
           return
         }
 
-        const saveInfo = action.payload
+        const saveInfo = {...action.payload, head: pickFileHead(state$.value)}
         const oldContent = nutstoreFile.content
         const newContent = pickFileContent(state$.value)
         try {
@@ -542,7 +542,8 @@ export const saveAndQuitFileEpic: Epic<State, Actions> = (action$, state$) =>
 
         if (nutstoreFile) {
           try {
-            await nutstoreFile.save(pickFileContent(state$.value))
+            const head = pickFileHead(state$.value)
+            await nutstoreFile.save(pickFileContent(state$.value), { head })
             await nutstoreFile.close()
           } catch (err) {
             Sentry.captureException(err)
@@ -691,6 +692,18 @@ function pickFileContent(state: State & ProjectNodeState & SlideState) {
     rootNodeIds: (state.rootNodeIds || []).map(uuidTryToBase64),
     slide: state.slide,
   } as StoreSchema)
+}
+
+function pickFileHead(state: State & ProjectNodeState & SlideState) {
+  const headId = state.rootNodeIds?.[0]
+  const content = headId && state.nodes?.[headId].content
+  let res: string = ''
+  if (content) {
+    const tempDom = document.createElement('div')
+    tempDom.innerHTML = content
+    res = tempDom.innerText
+  }
+  return res
 }
 
 /**

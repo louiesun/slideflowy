@@ -1,8 +1,130 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ImagePreviewModal{position:relative;display:flex;flex-direction:column;width:100%;height:100%;user-select:none}.ImagePreviewModal__preview{flex:1;display:flex;align-items:center;overflow:hidden}.ImagePreviewModal__preview .nav-btn-left{position:absolute;top:50%;left:0;transform:translateY(-50%);z-index:2}.ImagePreviewModal__preview .nav-btn-right{position:absolute;top:50%;right:0;transform:translateY(-50%)}.ImagePreviewModal__preview .nav-btn{visibility:hidden;width:100px;height:100px;padding:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}.ImagePreviewModal__preview .nav-btn.visible{visibility:visible}.ImagePreviewModal__preview .nav-btn svg{width:56px;height:56px}.ImagePreviewModal__img-container-mobile{flex:1;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%)}.ImagePreviewModal__img-container-mobile img{border-style:none;max-width:100%;max-height:100%;-webkit-user-select:none;cursor:grab}.ImagePreviewModal__img-container{flex:1;height:100%;margin-top:24px;overflow:hidden}.ImagePreviewModal__img-container img{position:relative;border-style:none;max-width:100%;max-height:100%;transform:translate(-50%, -50%);top:50%;left:50%;-webkit-user-select:none;cursor:grab}.ImagePreviewModal__scale{display:flex;flex-direction:row;justify-content:center;align-items:center;height:100px}.ImagePreviewModal__scale_panel{display:flex;justify-content:space-evenly;align-items:center;width:204px;height:56px;background:#1e1e1e;border-radius:8px}.ImagePreviewModal__scale_panel .zoom-btn{width:24px;height:24px;cursor:pointer;display:flex;align-items:center;justify-content:center}.ImagePreviewModal__close{position:absolute;top:24px;right:24px;width:56px;height:56px;cursor:pointer}.ImagePreviewModal__background{position:fixed;top:0;right:0;bottom:0;left:0;background-color:rgba(0,0,0,.6)}", "",{"version":3,"sources":["webpack://./src/components/ImagePreviewModalContext/style.scss"],"names":[],"mappings":"AAAA,mBACE,iBAAA,CACA,YAAA,CACA,qBAAA,CACA,UAAA,CACA,WAAA,CACA,gBAAA,CAEA,4BACE,MAAA,CACA,YAAA,CACA,kBAAA,CACA,eAAA,CAEA,0CACE,iBAAA,CACA,OAAA,CACA,MAAA,CACA,0BAAA,CACA,SAAA,CAGF,2CACE,iBAAA,CACA,OAAA,CACA,OAAA,CACA,0BAAA,CAGF,qCACE,iBAAA,CACA,WAAA,CACA,YAAA,CACA,YAAA,CACA,cAAA,CACA,YAAA,CACA,kBAAA,CACA,sBAAA,CAEA,6CACE,kBAAA,CAGF,yCACE,UAAA,CACA,WAAA,CAKN,yCACE,MAAA,CACA,iBAAA,CACA,OAAA,CACA,QAAA,CACA,+BAAA,CAEA,6CACE,iBAAA,CACA,cAAA,CACA,eAAA,CACA,wBAAA,CACA,WAAA,CAIJ,kCACE,MAAA,CACA,WAAA,CACA,eAAA,CACA,eAAA,CAEA,sCACE,iBAAA,CACA,iBAAA,CACA,cAAA,CACA,eAAA,CACA,+BAAA,CACA,OAAA,CACA,QAAA,CACA,wBAAA,CACA,WAAA,CAIJ,0BACE,YAAA,CACA,kBAAA,CACA,sBAAA,CACA,kBAAA,CACA,YAAA,CAGF,gCACE,YAAA,CACA,4BAAA,CACA,kBAAA,CACA,WAAA,CACA,WAAA,CACA,kBAAA,CACA,iBAAA,CAEA,0CACE,UAAA,CACA,WAAA,CACA,cAAA,CACA,YAAA,CACA,kBAAA,CACA,sBAAA,CAIJ,0BACE,iBAAA,CACA,QAAA,CACA,UAAA,CACA,UAAA,CACA,WAAA,CACA,cAAA,CAGF,+BACE,cAAA,CACA,KAAA,CACA,OAAA,CACA,QAAA,CACA,MAAA,CACA,+BAAA","sourcesContent":[".ImagePreviewModal {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: 100%;\n  user-select: none;\n\n  &__preview {\n    flex: 1;\n    display: flex;\n    align-items: center;\n    overflow: hidden;\n\n    .nav-btn-left {\n      position: absolute;\n      top: 50%;\n      left: 0;\n      transform: translateY(-50%);\n      z-index: 2;\n    }\n\n    .nav-btn-right {\n      position: absolute;\n      top: 50%;\n      right: 0;\n      transform: translateY(-50%);\n    }\n\n    .nav-btn {\n      visibility: hidden;\n      width: 100px;\n      height: 100px;\n      padding: 20px;\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n\n      &.visible {\n        visibility: visible;\n      }\n\n      svg {\n        width: 56px;\n        height: 56px;\n      }\n    }\n  }\n\n  &__img-container-mobile {\n    flex: 1;\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n\n    img {\n      border-style: none;\n      max-width: 100%;\n      max-height: 100%;\n      -webkit-user-select: none;\n      cursor: grab;\n    }\n  }\n\n  &__img-container {\n    flex: 1;\n    height: 100%;\n    margin-top: 24px;\n    overflow: hidden;\n\n    img {\n      position: relative;\n      border-style: none;\n      max-width: 100%;\n      max-height: 100%;\n      transform: translate(-50%, -50%);\n      top: 50%;\n      left: 50%;\n      -webkit-user-select: none;\n      cursor: grab;\n    }\n  }\n\n  &__scale {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n    height: 100px;\n  }\n\n  &__scale_panel {\n    display: flex;\n    justify-content: space-evenly;\n    align-items: center;\n    width: 204px;\n    height: 56px;\n    background: #1e1e1e;\n    border-radius: 8px;\n\n    .zoom-btn {\n      width: 24px;\n      height: 24px;\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n  }\n\n  &__close {\n    position: absolute;\n    top: 24px;\n    right: 24px;\n    width: 56px;\n    height: 56px;\n    cursor: pointer;\n  }\n\n  &__background {\n    position: fixed;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    background-color: rgba(0, 0, 0, 0.6);\n  }\n}\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+.ImagePreviewModal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+
+  &__preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    .nav-btn-left {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .nav-btn-right {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    .nav-btn {
+      visibility: hidden;
+      width: 100px;
+      height: 100px;
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.visible {
+        visibility: visible;
+      }
+
+      svg {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  }
+
+  &__img-container-mobile {
+    flex: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+      border-style: none;
+      max-width: 100%;
+      max-height: 100%;
+      -webkit-user-select: none;
+      cursor: grab;
+    }
+  }
+
+  &__img-container {
+    flex: 1;
+    height: 100%;
+    margin-top: 24px;
+    overflow: hidden;
+
+    img {
+      position: relative;
+      border-style: none;
+      max-width: 100%;
+      max-height: 100%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      -webkit-user-select: none;
+      cursor: grab;
+    }
+  }
+
+  &__scale {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+
+  &__scale_panel {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 204px;
+    height: 56px;
+    background: #1e1e1e;
+    border-radius: 8px;
+
+    .zoom-btn {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+  }
+
+  &__background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}

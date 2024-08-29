@@ -1,8 +1,275 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ProjectNodeContentView{position:relative;word-wrap:break-word;white-space:pre-wrap;cursor:text;font-size:16px;line-height:1.5;outline:none}.ProjectNodeContentView p{margin:0;padding:0}.ProjectNodeContentView p::selection{background-color:rgba(54,116,255,.16)}.ProjectNodeContentView span::selection{background-color:rgba(54,116,255,.16)}.ProjectNodeContentView a{color:#868c90;cursor:pointer;opacity:.8}.ProjectNodeContentView [contenteditable]{outline:0}.ProjectNodeContentView__LinkTooptip{position:fixed;z-index:1;padding:2px 5px;font-size:12px;background-color:#fff;color:#444;border:1px solid rgba(111,111,111,.35);word-wrap:break-word;text-transform:capitalize;transform:translateY(calc(0px - (100% + 5px)));will-change:top,left}.IsPlaying{background:#e6f2ff;border-radius:4px}.CollapseIndicator{transition:transform 200ms ease 0s}.CollapseIndicator--expaneded{transform:rotateZ(90deg)}.CollapseIndicator svg{display:block;fill:#dce0e2}.CollapseIndicator:hover svg{fill:#4b5155}.ProjectNodePopoverMenu__trigger>svg{display:block;width:24px;height:24px;fill:#dce0e2;border-radius:12px}.ProjectNodePopoverMenu__trigger:hover>svg{background:#fff;fill:#107ffc}.ProjectNodePopoverMenu__trigger.active>svg{background:#fff;fill:#107ffc}.ProjectNodePopoverMenu__popover{display:block;z-index:1}.ProjectNode{margin-left:-24px;padding-left:24px}.ProjectNode__item{position:relative;margin-left:0;padding-left:0}.ProjectNode__fence{position:absolute;top:0;width:1px;height:100%;background-color:#eee}.ProjectNode__fence.withImage{height:calc(100% + 4px)}.ProjectNode .ProjectNodePopoverMenu__trigger,.ProjectNode .CollapseIndicator,.ProjectNode__bullet-trigger{position:absolute;z-index:1;cursor:pointer}.ProjectNode .ProjectNodePopoverMenu__trigger{display:none;top:2px;left:-26px}.ProjectNode--menu-visible>.ProjectNode__item>.ProjectNodePopoverMenu__trigger,.ProjectNode:hover>.ProjectNode__item>.ProjectNodePopoverMenu__trigger{display:block}.ProjectNode .CollapseIndicator{top:4px;left:-2px}.ProjectNode__item:hover>.CollapseIndicator svg{fill:#4b5155}.App.App--in-mobile .ProjectNode--has-child:not(.ProjectNode--selected)>.ProjectNode__item .CollapseIndicator{display:block}.App:not(.App--in-mobile) .ProjectNode--has-child:not(.ProjectNode--selected)>.ProjectNode__item:hover .CollapseIndicator{display:block}.ProjectNode__bullet-trigger{top:4px;left:20px;border-radius:100px}.ProjectNode--has-child:not(.ProjectNode--expanded) .ProjectNode__bullet{background:rgba(162,199,252,.32)}.ProjectNode--has-child:not(.ProjectNode--expanded) .ProjectNode__bullet::before{background:#62a6ff}.ProjectNode__bullet{display:block;padding:6px;border-radius:100px;cursor:pointer}.ProjectNode__bullet::before{display:block;content:\" \";width:8px;height:8px;border-radius:100px;background:#777}.ProjectNode__bullet.hover{background:rgba(0,0,0,.3)}.App:not(.App--in-mobile) .ProjectNode--has-child:not(.ProjectNode--expanded) .ProjectNode__bullet:hover{background:#a2c7fc}.App:not(.App--in-mobile) .ProjectNode__bullet:hover{background:rgba(0,0,0,.3)}.ProjectNode--selected .ProjectNodeContentView{background:rgba(168,209,255,.5)}.windowBlurred .ProjectNode--selected .ProjectNodeContentView{background:rgba(200,200,200,.5)}.ProjectNode--completed .ProjectNodeContentView{color:#999;text-decoration:line-through}.ProjectNode--menu-visible .ProjectNodeContentView,.ProjectNode .ProjectNodeContentView:focus-within{background:rgba(239,239,239,.5);border-radius:5px}.ProjectNode__item .ProjectNodeContentView{margin:0 15px;padding:2px 15px 2px 30px}.ProjectNode__item .ProjectNodeImageList{margin-left:30px;padding-left:15px;border-left:1px solid #eee}.ProjectNode .ProjectNodeList{border-left:1px solid #eee}::selection,.ProjectNode .ProjectNodeContentView .selection{display:inline;padding:0;background:#b7d6fd}", "",{"version":3,"sources":["webpack://./src/components/ProjectNodeContentView/style.scss","webpack://./src/styles/_variables.scss","webpack://./src/components/ProjectNode/style.scss"],"names":[],"mappings":"AAEA,wBACE,iBAAA,CACA,oBAAA,CACA,oBAAA,CACA,WAAA,CACA,cCPU,CDQV,eCFY,CDGZ,YAAA,CAEA,0BACE,QAAA,CACA,SAAA,CAEA,qCACE,qCAAA,CAIJ,wCACE,qCAAA,CAGF,0BACE,aAAA,CACA,cAAA,CACA,UAAA,CAGF,0CACE,SAAA,CAGF,qCACE,cAAA,CACA,SAAA,CACA,eAAA,CACA,cAAA,CACA,qBAAA,CACA,UAAA,CACA,sCAAA,CACA,oBAAA,CACA,yBAAA,CACA,8CAAA,CACA,oBAAA,CAIJ,WACE,kBAAA,CACA,iBAAA,CE7CF,mBACE,kCAAA,CAEA,8BACE,wBAAA,CAGF,uBACE,aAAA,CACA,YAXsB,CAaxB,6BACE,YAb4B,CAwB5B,qCACE,aAAA,CACA,UATwB,CAUxB,WAVwB,CAWxB,YA7BoB,CA8BpB,kBAAA,CAGF,2CACE,eAZ2C,CAa3C,YAdwC,CAiB1C,4CACE,eAjB2C,CAkB3C,YAnBwC,CAuB5C,iCACE,aAAA,CACA,SAAA,CAOJ,aAOE,iBAAA,CACA,iBA3C4B,CA6C5B,mBACE,iBAAA,CACA,aAAA,CACA,cAd6B,CAiB/B,oBACE,iBAAA,CACA,KAAA,CACA,SAAA,CACA,WAAA,CACA,qBAAA,CAEA,8BACE,uBAAA,CAWJ,2GAGE,iBAAA,CACA,SAAA,CACA,cAAA,CAGF,8CACE,YAAA,CACA,OAAA,CACA,UAAA,CAEF,sJAEE,aAAA,CAGF,gCACE,OAAA,CACA,SAAA,CAEF,gDACE,YA9G4B,CAiH5B,8GAGE,aAAA,CAIF,0HAGE,aAAA,CAIJ,6BACE,OAAA,CACA,SAAA,CACA,mBA3EqB,CA6EvB,yEACE,gCAAA,CAEA,iFACE,kBAAA,CAMJ,qBACE,aAAA,CACA,WAAA,CACA,mBA1FqB,CA2FrB,cAAA,CAEA,6BACE,aAAA,CACA,WAAA,CACA,SAlGe,CAmGf,UAnGe,CAoGf,mBAAA,CACA,eAAA,CAGF,2BACE,yBAAA,CAIF,yGACE,kBAAA,CAEF,qDACE,yBAAA,CAMJ,+CACE,+BAAA,CAEA,8DACE,+BAAA,CAIJ,gDACE,UA5HuC,CA6HvC,4BAAA,CAGF,qGAEE,+BA1ImC,CA2InC,iBA1IgC,CAqKlC,2CAME,aAAA,CACA,yBAAA,CAkBF,yCACE,gBA7BqB,CA8BrB,iBAAA,CACA,0BA9BY,CAkCd,8BACE,0BAnCY,CAuChB,4DAEE,cAAA,CACA,SAAA,CACA,kBAAA","sourcesContent":["@import '../../styles/variables';\n\n.ProjectNodeContentView {\n  position: relative;\n  word-wrap: break-word;\n  white-space: pre-wrap;\n  cursor: text;\n  font-size: $font-size;\n  line-height: $line-height;\n  outline: none;\n\n  p {\n    margin: 0;\n    padding: 0;\n\n    &::selection {\n      background-color: rgba(54, 116, 255, 0.16);\n    }\n  }\n\n  span::selection {\n    background-color: rgba(54, 116, 255, 0.16);\n  }\n\n  a {\n    color: rgb(134, 140, 144);\n    cursor: pointer;\n    opacity: 0.8;\n  }\n\n  [contenteditable] {\n    outline: 0;\n  }\n\n  &__LinkTooptip {\n    position: fixed;\n    z-index: 1;\n    padding: 2px 5px;\n    font-size: 12px;\n    background-color: #fff;\n    color: #444;\n    border: 1px solid rgba(111, 111, 111, 0.35);\n    word-wrap: break-word;\n    text-transform: capitalize;\n    transform: translateY(calc(0px - (100% + 5px)));\n    will-change: top, left;\n  }\n}\n\n.IsPlaying {\n  background: #e6f2ff;\n  border-radius: 4px;\n}\n","$font-size: 16px;\n$font-size-small: $font-size - 2px;\n\n$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,\n  Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';\n\n$line-height: 1.5;\n","@import '../../styles/variables';\n@import '../../styles/platforms';\n@import '../ProjectNodeContentView/style';\n\n$CollapseIndicator-color: rgb(220, 224, 226);\n$CollapseIndicator-hover-color: rgb(75, 81, 85);\n.CollapseIndicator {\n  transition: transform 200ms ease 0s;\n\n  &--expaneded {\n    transform: rotateZ(90deg);\n  }\n\n  svg {\n    display: block;\n    fill: $CollapseIndicator-color;\n  }\n  &:hover svg {\n    fill: $CollapseIndicator-hover-color;\n  }\n}\n\n$ProjectNodePopoverMenu-size: 24px;\n.ProjectNodePopoverMenu {\n  $ProjectNodePopoverMenu-color: $CollapseIndicator-color;\n  $ProjectNodePopoverMenu-active-hover-color: rgb(16, 127, 252);\n  $ProjectNodePopoverMenu-active-hover-bg-color: #ffffff;\n\n  &__trigger {\n    > svg {\n      display: block;\n      width: $ProjectNodePopoverMenu-size;\n      height: $ProjectNodePopoverMenu-size;\n      fill: $ProjectNodePopoverMenu-color;\n      border-radius: 12px;\n    }\n\n    &:hover > svg {\n      background: $ProjectNodePopoverMenu-active-hover-bg-color;\n      fill: $ProjectNodePopoverMenu-active-hover-color;\n    }\n\n    &.active > svg {\n      background: $ProjectNodePopoverMenu-active-hover-bg-color;\n      fill: $ProjectNodePopoverMenu-active-hover-color;\n    }\n  }\n\n  &__popover {\n    display: block;\n    z-index: 1;\n  }\n}\n\n$ProjectNode-editing-background-color: rgba(239, 239, 239, 0.5);\n$ProjectNode-editing-border-radius: 5px;\n$ProjectNode__item-padding-left: 0px;\n.ProjectNode {\n  $bullet-dot-width: 8px;\n  $bullet-width: 20px;\n  $bullet-border-radius: 100px;\n  $ProjectNodeContentView-vertical-padding: 2px;\n  $ProjectNodeContentView-completed-color: rgb(153, 153, 153);\n\n  margin-left: 0 - $ProjectNodePopoverMenu-size;\n  padding-left: $ProjectNodePopoverMenu-size;\n\n  &__item {\n    position: relative;\n    margin-left: 0 - $ProjectNode__item-padding-left;\n    padding-left: $ProjectNode__item-padding-left;\n  }\n\n  &__fence {\n    position: absolute;\n    top: 0;\n    width: 1px;\n    height: 100%;\n    background-color: #eee;\n\n    &.withImage {\n      height: calc(100% + 4px);\n    }\n  }\n\n  /** 操作按钮相关 */\n\n  @function action-bar-top($icon-size) {\n    @return ((($font-size * $line-height) - $icon-size) / 2) +\n      $ProjectNodeContentView-vertical-padding;\n  }\n\n  .ProjectNodePopoverMenu__trigger,\n  .CollapseIndicator,\n  &__bullet-trigger {\n    position: absolute;\n    z-index: 1;\n    cursor: pointer;\n  }\n\n  .ProjectNodePopoverMenu__trigger {\n    display: none;\n    top: action-bar-top($ProjectNodePopoverMenu-size);\n    left: $ProjectNode__item-padding-left - $ProjectNodePopoverMenu-size - 2px;\n  }\n  &--menu-visible > &__item > .ProjectNodePopoverMenu__trigger,\n  &:hover > &__item > .ProjectNodePopoverMenu__trigger {\n    display: block;\n  }\n\n  .CollapseIndicator {\n    top: action-bar-top(20px);\n    left: $ProjectNode__item-padding-left - 2px;\n  }\n  &__item:hover > .CollapseIndicator svg {\n    fill: $CollapseIndicator-hover-color;\n  }\n  @include platform-mobile() {\n    &--has-child:not(.ProjectNode--selected)\n      > .ProjectNode__item\n      .CollapseIndicator {\n      display: block;\n    }\n  }\n  @include platform-desktop() {\n    &--has-child:not(.ProjectNode--selected)\n      > .ProjectNode__item:hover\n      .CollapseIndicator {\n      display: block;\n    }\n  }\n\n  &__bullet-trigger {\n    top: action-bar-top(20px);\n    left: $ProjectNode__item-padding-left + 20px;\n    border-radius: $bullet-border-radius;\n  }\n  &--has-child:not(&--expanded) &__bullet {\n    background: rgba(162, 199, 252, 0.32);\n\n    &::before {\n      background: #62a6ff;\n    }\n  }\n\n  /** bullet 本体相关 */\n\n  &__bullet {\n    display: block;\n    padding: ($bullet-width - $bullet-dot-width) / 2;\n    border-radius: $bullet-border-radius;\n    cursor: pointer;\n\n    &::before {\n      display: block;\n      content: ' ';\n      width: $bullet-dot-width;\n      height: $bullet-dot-width;\n      border-radius: 100px;\n      background: #777;\n    }\n\n    &.hover {\n      background: rgba(0, 0, 0, 0.3);\n    }\n  }\n  @include platform-desktop() {\n    &--has-child:not(.ProjectNode--expanded) .ProjectNode__bullet:hover {\n      background: rgba(162, 199, 252, 1);\n    }\n    &__bullet:hover {\n      background: rgba(0, 0, 0, 0.3);\n    }\n  }\n\n  /** ProjectNodeContentView 相关 */\n\n  &--selected .ProjectNodeContentView {\n    background: rgba(168, 209, 255, 0.5);\n\n    .windowBlurred & {\n      background: rgba(200, 200, 200, 0.5);\n    }\n  }\n\n  &--completed .ProjectNodeContentView {\n    color: $ProjectNodeContentView-completed-color;\n    text-decoration: line-through;\n  }\n\n  &--menu-visible .ProjectNodeContentView,\n  .ProjectNodeContentView:focus-within {\n    background: $ProjectNode-editing-background-color;\n    border-radius: $ProjectNode-editing-border-radius;\n  }\n\n  /**\n   * 有这么一个界面\n   *\n   * *  xxxxxx\n   * |    *  xxxxx\n   * |    |    *  xxxx\n   * |    |    *  xxxx\n   * |    *  xxxxx\n   *\n   * 每个条目可以被选中，希望选中时的效果是这样子的（;是选中时的背景色）\n   *\n   * *  xxxxxx\n   * |  ;;*;;xxxxx\n   * |  ;;|;;;;*;;xxxx\n   * |  ;;|;;;;*;;xxxx\n   * |  ;;*;;xxxxx\n   *\n   * 然后 * 是绝对定位的，因此需要 margin-left 是 padding-left 的二分之一\n   */\n\n  // 这个 distance 指的是子节点的线和父节点的线之间的距离\n  $node-border-distance: 30px;\n  $node-border: 1px solid #eee;\n\n  &__item .ProjectNodeContentView {\n    $margin: $node-border-distance / 2;\n\n    // 因为激活的节点是有背景色的，然后在移动平台上节点距离屏幕边界又特别近，\n    // 很容易发现背景色划出来的块和屏幕两边的距离不一致，所以一旦加 margin\n    // 两边都要加\n    margin: 0 $margin;\n    padding: $ProjectNodeContentView-vertical-padding\n      ($node-border-distance - $margin) $ProjectNodeContentView-vertical-padding\n      $node-border-distance;\n  }\n\n  /**\n   * 图片列表是这样的样式\n   *\n   * *  xxxxxx\n   * |    *  xxxxx\n   * |    |    *  xxxx\n   * |    |    |  ###  <-- 这两行 # 是一张图\n   * |    |    |  ###\n   * |    |    *  xxxx\n   * |    *  xxxxx\n   *\n   * 所以我们需要在图片的左侧再画一条线\n   */\n  &__item .ProjectNodeImageList {\n    margin-left: $node-border-distance;\n    padding-left: $node-border-distance / 2;\n    border-left: $node-border;\n  }\n\n  /** 子节点列表相关 */\n  .ProjectNodeList {\n    border-left: $node-border;\n  }\n}\n\n::selection,\n.ProjectNode .ProjectNodeContentView .selection {\n  display: inline;\n  padding: 0;\n  background: #b7d6fd;\n}\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+@import '../../styles/variables';
+@import '../../styles/platforms';
+@import '../ProjectNodeContentView/style';
+
+$CollapseIndicator-color: rgb(220, 224, 226);
+$CollapseIndicator-hover-color: rgb(75, 81, 85);
+.CollapseIndicator {
+  transition: transform 200ms ease 0s;
+
+  &--expaneded {
+    transform: rotateZ(90deg);
+  }
+
+  svg {
+    display: block;
+    fill: $CollapseIndicator-color;
+  }
+  &:hover svg {
+    fill: $CollapseIndicator-hover-color;
+  }
+}
+
+$ProjectNodePopoverMenu-size: 24px;
+.ProjectNodePopoverMenu {
+  $ProjectNodePopoverMenu-color: $CollapseIndicator-color;
+  $ProjectNodePopoverMenu-active-hover-color: rgb(16, 127, 252);
+  $ProjectNodePopoverMenu-active-hover-bg-color: #ffffff;
+
+  &__trigger {
+    > svg {
+      display: block;
+      width: $ProjectNodePopoverMenu-size;
+      height: $ProjectNodePopoverMenu-size;
+      fill: $ProjectNodePopoverMenu-color;
+      border-radius: 12px;
+    }
+
+    &:hover > svg {
+      background: $ProjectNodePopoverMenu-active-hover-bg-color;
+      fill: $ProjectNodePopoverMenu-active-hover-color;
+    }
+
+    &.active > svg {
+      background: $ProjectNodePopoverMenu-active-hover-bg-color;
+      fill: $ProjectNodePopoverMenu-active-hover-color;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      &:hover > svg,
+      &.active > svg {
+        background: $dark-hover-bg-color;
+      }
+    }
+  }
+
+  &__popover {
+    display: block;
+    z-index: 1;
+  }
+}
+
+$ProjectNode-editing-background-color: rgba(239, 239, 239, 0.5);
+$ProjectNode-editing-border-radius: 5px;
+$ProjectNode__item-padding-left: 0px;
+.ProjectNode {
+  $bullet-dot-width: 8px;
+  $bullet-width: 20px;
+  $bullet-border-radius: 100px;
+  $ProjectNodeContentView-vertical-padding: 2px;
+  $ProjectNodeContentView-completed-color: rgb(153, 153, 153);
+
+  margin-left: 0 - $ProjectNodePopoverMenu-size;
+  padding-left: $ProjectNodePopoverMenu-size;
+
+  &__item {
+    position: relative;
+    margin-left: 0 - $ProjectNode__item-padding-left;
+    padding-left: $ProjectNode__item-padding-left;
+  }
+
+  &__fence {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #eee;
+
+    &.withImage {
+      height: calc(100% + 4px);
+    }
+  }
+
+  /** 操作按钮相关 */
+
+  @function action-bar-top($icon-size) {
+    @return ((($font-size * $line-height) - $icon-size) / 2) +
+      $ProjectNodeContentView-vertical-padding;
+  }
+
+  .ProjectNodePopoverMenu__trigger,
+  .CollapseIndicator,
+  &__bullet-trigger {
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .ProjectNodePopoverMenu__trigger {
+    display: none;
+    top: action-bar-top($ProjectNodePopoverMenu-size);
+    left: $ProjectNode__item-padding-left - $ProjectNodePopoverMenu-size - 2px;
+  }
+  &--menu-visible > &__item > .ProjectNodePopoverMenu__trigger,
+  &:hover > &__item > .ProjectNodePopoverMenu__trigger {
+    display: block;
+  }
+
+  .CollapseIndicator {
+    top: action-bar-top(20px);
+    left: $ProjectNode__item-padding-left - 2px;
+  }
+  &__item:hover > .CollapseIndicator svg {
+    fill: $CollapseIndicator-hover-color;
+  }
+  @include platform-mobile() {
+    &--has-child:not(.ProjectNode--selected)
+      > .ProjectNode__item
+      .CollapseIndicator {
+      display: block;
+    }
+  }
+  @include platform-desktop() {
+    &--has-child:not(.ProjectNode--selected)
+      > .ProjectNode__item:hover
+      .CollapseIndicator {
+      display: block;
+    }
+  }
+
+  &__bullet-trigger {
+    top: action-bar-top(20px);
+    left: $ProjectNode__item-padding-left + 20px;
+    border-radius: $bullet-border-radius;
+  }
+  &--has-child:not(&--expanded) &__bullet {
+    background: rgba(162, 199, 252, 0.32);
+
+    &::before {
+      background: #62a6ff;
+    }
+  }
+
+  /** bullet 本体相关 */
+
+  &__bullet {
+    display: block;
+    padding: ($bullet-width - $bullet-dot-width) / 2;
+    border-radius: $bullet-border-radius;
+    cursor: pointer;
+
+    &::before {
+      display: block;
+      content: ' ';
+      width: $bullet-dot-width;
+      height: $bullet-dot-width;
+      border-radius: 100px;
+      background: #777;
+    }
+
+    &.hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+  @include platform-desktop() {
+    &--has-child:not(.ProjectNode--expanded) .ProjectNode__bullet:hover {
+      background: rgba(162, 199, 252, 1);
+    }
+    &__bullet:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  /** ProjectNodeContentView 相关 */
+
+  &--selected .ProjectNodeContentView {
+    background: rgba(168, 209, 255, 0.5);
+
+    .windowBlurred & {
+      background: rgba(200, 200, 200, 0.5);
+    }
+  }
+
+  &--completed .ProjectNodeContentView {
+    color: $ProjectNodeContentView-completed-color;
+    text-decoration: line-through;
+  }
+
+  &--menu-visible .ProjectNodeContentView,
+  .ProjectNodeContentView:focus-within {
+    @media (prefers-color-scheme: dark) {
+      & {
+        background: rgba(239, 239, 239, 0.16);
+      }
+    }
+    background: $ProjectNode-editing-background-color;
+    border-radius: $ProjectNode-editing-border-radius;
+  }
+
+  /**
+   * 有这么一个界面
+   *
+   * *  xxxxxx
+   * |    *  xxxxx
+   * |    |    *  xxxx
+   * |    |    *  xxxx
+   * |    *  xxxxx
+   *
+   * 每个条目可以被选中，希望选中时的效果是这样子的（;是选中时的背景色）
+   *
+   * *  xxxxxx
+   * |  ;;*;;xxxxx
+   * |  ;;|;;;;*;;xxxx
+   * |  ;;|;;;;*;;xxxx
+   * |  ;;*;;xxxxx
+   *
+   * 然后 * 是绝对定位的，因此需要 margin-left 是 padding-left 的二分之一
+   */
+
+  // 这个 distance 指的是子节点的线和父节点的线之间的距离
+  $node-border-distance: 30px;
+  $node-border: 1px solid #eee;
+
+  &__item .ProjectNodeContentView {
+    $margin: $node-border-distance / 2;
+
+    // 因为激活的节点是有背景色的，然后在移动平台上节点距离屏幕边界又特别近，
+    // 很容易发现背景色划出来的块和屏幕两边的距离不一致，所以一旦加 margin
+    // 两边都要加
+    margin: 0 $margin;
+    padding: $ProjectNodeContentView-vertical-padding
+      ($node-border-distance - $margin) $ProjectNodeContentView-vertical-padding
+      $node-border-distance;
+  }
+
+  /**
+   * 图片列表是这样的样式
+   *
+   * *  xxxxxx
+   * |    *  xxxxx
+   * |    |    *  xxxx
+   * |    |    |  ###  <-- 这两行 # 是一张图
+   * |    |    |  ###
+   * |    |    *  xxxx
+   * |    *  xxxxx
+   *
+   * 所以我们需要在图片的左侧再画一条线
+   */
+  &__item .ProjectNodeImageList {
+    margin-left: $node-border-distance;
+    padding-left: $node-border-distance / 2;
+    border-left: $node-border;
+  }
+
+  /** 子节点列表相关 */
+  .ProjectNodeList {
+    border-left: $node-border;
+  }
+}
+
+::selection,
+.ProjectNode .ProjectNodeContentView .selection {
+  display: inline;
+  padding: 0;
+  background: #b7d6fd;
+}

@@ -1,0 +1,64 @@
+// https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions
+// http://screensiz.es/monitor
+
+$breakpoint-zr: 0px;
+$breakpoint-xs: 425px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 960px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1920px;
+$breakpoint-sizes: (
+  $breakpoint-zr,
+  $breakpoint-xs,
+  $breakpoint-sm,
+  $breakpoint-md,
+  $breakpoint-lg,
+  $breakpoint-xl
+);
+
+$breakpoint-mobile-s: 320px;
+$breakpoint-mobile-m: 375px;
+$breakpoint-mobile-l: 425px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-laptop-l: 1440px;
+$breakpoint-devices: (
+  $breakpoint-mobile-s,
+  $breakpoint-mobile-m,
+  $breakpoint-mobile-l,
+  $breakpoint-tablet,
+  $breakpoint-laptop,
+  $breakpoint-laptop-l
+);
+
+@mixin breakpoint-gte($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lte($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($breakpoint-min, $breakpoint-max) {
+  @media (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+@mixin breakpoint-only($breakpoint, $breakpoints) {
+  $breakpoint-index: index($breakpoints, $breakpoint);
+
+  @if $breakpoint-index {
+    @media (min-width: $breakpoint) and (max-width: nth($breakpoints, $breakpoint-index + 1)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}

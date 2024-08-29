@@ -1,8 +1,67 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ProjectNodeMenu{list-style:none;min-width:160px;margin:0;padding:0;border:1px solid #e6e6e6;border-radius:4px;box-shadow:0 2px 16px 0 rgba(0,0,0,.08);background:#fff}.ProjectNodeMenu__container{z-index:1}.ProjectNodeMenu>.divider{height:1px;padding:0;margin:2px 0;background-color:#f8f7f9}.ProjectNodeMenu>li{width:100%;height:36px;padding:8px 0 8px 16px;font-size:14px;line-height:20px;font-family:PingFangSC-Regular,PingFang SC;font-weight:400;color:#1e1e1e;cursor:pointer;display:flex;align-items:center}.ProjectNodeMenu>li.hidden{display:none}.ProjectNodeMenu>li.disabled{opacity:.4;pointer-events:none}.ProjectNodeMenu>li:not(.disabled):hover{background:#f8f7f9}.ProjectNodeMenu>li .svg-container{margin-right:8px;width:20px;height:20px;display:flex;align-items:center;justify-content:center}.ProjectNodeMenu>li:first-child{margin-top:2px}.ProjectNodeMenu>li:last-child{margin-bottom:2px}", "",{"version":3,"sources":["webpack://./src/components/ProjectNodeMenu/style.scss"],"names":[],"mappings":"AAAA,iBACE,eAAA,CACA,eAAA,CACA,QAAA,CACA,SAAA,CACA,wBAAA,CACA,iBAAA,CACA,uCAAA,CACA,eAAA,CAEA,4BACE,SAAA,CAGF,0BACE,UAAA,CACA,SAAA,CACA,YAAA,CACA,wBAAA,CAGF,oBACE,UAAA,CACA,WAAA,CACA,sBAAA,CACA,cAAA,CACA,gBAAA,CACA,0CAAA,CACA,eAAA,CACA,aAAA,CACA,cAAA,CACA,YAAA,CACA,kBAAA,CAEA,2BACE,YAAA,CAGF,6BACE,UAAA,CACA,mBAAA,CAGF,yCACE,kBAAA,CAGF,mCACE,gBAAA,CACA,UAAA,CACA,WAAA,CACA,YAAA,CACA,kBAAA,CACA,sBAAA,CAIJ,gCACE,cAAA,CAGF,+BACE,iBAAA","sourcesContent":[".ProjectNodeMenu {\n  list-style: none;\n  min-width: 160px;\n  margin: 0;\n  padding: 0;\n  border: 1px solid #E6E6E6;\n  border-radius: 4px;\n  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.08);\n  background: #fff;\n\n  &__container {\n    z-index: 1;\n  }\n\n  > .divider {\n    height: 1px;\n    padding: 0;\n    margin: 2px 0;\n    background-color: #F8F7F9;\n  }\n  \n  > li {\n    width: 100%;\n    height: 36px;\n    padding: 8px 0 8px 16px;\n    font-size: 14px;\n    line-height: 20px;\n    font-family: PingFangSC-Regular, PingFang SC;\n    font-weight: 400;\n    color: #1E1E1E;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n    &.hidden {\n      display: none;\n    }\n\n    &.disabled {\n      opacity: 0.4;\n      pointer-events: none;\n    }\n\n    &:not(.disabled):hover {\n      background: #F8F7F9;\n    }\n\n    .svg-container {\n      margin-right: 8px;\n      width: 20px;\n      height: 20px;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n  }\n\n  > li:first-child {\n    margin-top: 2px;\n  }\n\n  > li:last-child {\n    margin-bottom: 2px;\n  }\n}"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+@import '../../styles/variables';
+
+.ProjectNodeMenu {
+  list-style: none;
+  min-width: 160px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.08);
+  background: var(--bg-color);
+
+  &__container {
+    z-index: 1;
+  }
+
+  > .divider {
+    height: 1px;
+    padding: 0;
+    margin: 2px 0;
+    background-color: var(--divider-color);
+  }
+
+  > li {
+    width: 100%;
+    height: 36px;
+    padding: 8px 0 8px 16px;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: var(--font-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    &:not(.disabled):hover {
+      background: var(--hover-bg-color);
+    }
+
+    .svg-container {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  > li:first-child {
+    margin-top: 2px;
+  }
+
+  > li:last-child {
+    margin-bottom: 2px;
+  }
+}

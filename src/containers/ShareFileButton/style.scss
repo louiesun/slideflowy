@@ -1,8 +1,10 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ShareFileButton__Modal .Modal__body{max-width:576px;width:calc(100% - 72px);border-radius:6px;background:#fff}", "",{"version":3,"sources":["webpack://./src/containers/ShareFileButton/style.scss"],"names":[],"mappings":"AAEI,qCACE,eAAA,CACA,uBAAA,CACA,iBAAA,CACA,eAAA","sourcesContent":[".ShareFileButton {\n  &__Modal {\n    .Modal__body {\n      max-width: 576px;\n      width: calc(100% - 72px);\n      border-radius: 6px;\n      background: #fff;\n    }\n  }\n}\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+.ShareFileButton {
+  &__Modal {
+    .Modal__body {
+      max-width: 576px;
+      width: calc(100% - 72px);
+      border-radius: 6px;
+      background: #fff;
+    }
+  }
+}

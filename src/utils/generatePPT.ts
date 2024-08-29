@@ -6,11 +6,14 @@ import { random } from 'lodash'
 import { UNSPLASH_COLLECTION } from '../common/backgroundImagePath'
 import { FileService } from '../services/FileService'
 import { HTMLStringParser, NodeType } from './HTMLStringParser'
+import { $t } from '../i18n'
 
 const fileService = new FileService()
 
 interface IProjectNodeTree extends IProjectNode {
-  children?: IProjectNodeTree[]
+  children?: IProjectNodeTree[],
+  parent?: IProjectNodeTree,
+  fileName?: string
 }
 
 enum SlideMaster {
@@ -50,7 +53,7 @@ export const generatePPT = async ({
   slideBG,
 }: GeneratePPTParams) => {
   // 大体的思路就是把一维的节点数据先递归转为树形数据，然后在递归树形数据，为每一个节点设置 PPT 页面和文字之类的。
-  const treeData = generateNodeTree(nodes, rootNodeIds)
+  const treeData = generateNodeTree(fileName, nodes, rootNodeIds)
   const pptx = new pptxgen()
   // 配置 PPT 母版
   configurePPTTemplate(pptx, slideBG)
@@ -70,15 +73,18 @@ export const generatePPT = async ({
 }
 
 export const generateNodeTree = (
+  fileName: string,
   nodes: Nodes,
   rootNodeIds: RootNodeIds,
 ): IProjectNodeTree[] => {
   const result: IProjectNodeTree[] = []
   rootNodeIds?.forEach(rootNodeId => {
     const rootNode = nodes[rootNodeId]
+    rootNode.fileName = fileName
     if (rootNode.childrenIds.length > 0) {
       rootNode.children = []
-      rootNode.children = recursivelyGenerateTree(rootNode.childrenIds, nodes)
+      rootNode.children = recursivelyGenerateTree(fileName, rootNode.childrenIds, nodes)
+      rootNode.children.forEach(child => (child.parent = rootNode))
     }
     // ProseMirror 在处理连续空格时使用的是 &nbsp;
     // 但是 PPT 会把 &nbsp; 当成普通的字符串，所以这里要替换掉
@@ -89,6 +95,7 @@ export const generateNodeTree = (
 }
 
 function recursivelyGenerateTree(
+  fileName: string,
   ids: string[],
   nodes: Nodes,
 ): IProjectNodeTree[] {
@@ -96,13 +103,15 @@ function recursivelyGenerateTree(
   if (ids.length > 0) {
     ids.forEach(id => {
       const currentNode = nodes[id]
+      currentNode.fileName = fileName
       currentNode.content = currentNode.content.replace(/\&nbsp;/g, ' ')
       result.push(currentNode)
       if (currentNode.childrenIds.length > 0) {
         currentNode.children = []
         currentNode.children = currentNode.children.concat(
-          recursivelyGenerateTree(currentNode.childrenIds, nodes),
+          recursivelyGenerateTree(fileName, currentNode.childrenIds, nodes),
         )
+        currentNode.children.forEach(child => (child.parent = currentNode))
       }
     })
   }
@@ -431,6 +440,26 @@ function setTitleAndTextPositionBasedOnHierarchy({
   const textWidth = determineTheWidthOfTheTextBoxBasedOnWhetherThereIsAnIllustration(
     node.images,
   )
+  page.addText(depth === 1 ? node.fileName || $t('NUTFLOWY') : node.parent?.content!, {
+    x: 0.2,
+    y: "-40%",
+    color:"#FFFFFF",
+    fontSize: 18,
+    w: "100%",
+    h: "100%",
+    transparency: 20,
+  })
+  page.addShape('rect', {
+    w: 0.75,
+    h: 0.03,
+    x: 0.3,
+    y: 0.85,
+    fill: {
+      color: "#678eff",
+      transparency: 20,
+    }
+  })
+
   if (depth <= 2) {
     setCircularTitleAndText({
       page,

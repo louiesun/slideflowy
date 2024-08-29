@@ -1,5 +1,6 @@
 export default {
   'zh-cn': {
+    NUTFLOWY: '大纲笔记',
     NUTFLOWY_BACK: '返回',
     NUTFLOWY_MORE: '更多',
     NUTFOLWY_CANCEL: '取消',
@@ -149,6 +150,7 @@ export default {
     WEB_LINK: '网页链接',
   },
   'en-us': {
+    NUTFLOWY: 'Nutflowy',
     NUTFLOWY_BACK: 'Back',
     NUTFLOWY_MORE: 'More',
     NUTFOLWY_CANCEL: 'cancel',

@@ -324,7 +324,7 @@ export const Export = (props: ExportProps) => {
               top: 24,
             }}
           >
-            <div>{$t('NUTFLOWY_EXPORT_FORMAT')}：</div>
+            <div className="label">{$t('NUTFLOWY_EXPORT_FORMAT')}：</div>
             <Select
               defaultValue={{
                 item: format,
@@ -355,7 +355,7 @@ export const Export = (props: ExportProps) => {
                   top: 72,
                 }}
               >
-                <div>{$t('NUTFLOWY_EXPORT_SCALE')}：</div>
+                <div className='label'>{$t('NUTFLOWY_EXPORT_SCALE')}：</div>
                 <Select
                   defaultValue={{
                     item: scale + '00%',

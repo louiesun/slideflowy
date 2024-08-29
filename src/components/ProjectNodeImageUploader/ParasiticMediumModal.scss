@@ -1,8 +1,105 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ParasiticMediumModal{padding:24px 46px 40px;width:540px;background:#fff;border-radius:12px}.ParasiticMediumModal p{margin:0}.ParasiticMediumModal .close-icon{position:absolute;right:20px;top:20px;cursor:pointer;width:20px;height:20px}.ParasiticMediumModal>h3{font-size:18px;font-weight:400;color:#333;margin:0;text-align:center}.ParasiticMediumModal .UploadRegin{margin-top:24px;padding-top:40px;padding-bottom:40px;border:1px dashed #707070;border-radius:8px;cursor:pointer}.ParasiticMediumModal .UploadRegin.isDragOver{background:#e6f1ff;border-color:#3a95ff}.ParasiticMediumModal .UploadRegin-main>svg{display:block;margin:0 auto}.ParasiticMediumModal .UploadRegin-main>svg.filterGrey{filter:grayscale(100%)}.ParasiticMediumModal .UploadRegin-main__uploading{margin-top:16px}.ParasiticMediumModal .UploadRegin-main__uploading .uploadProgress{margin:16px 40px 0}.ParasiticMediumModal .UploadRegin-main__uploading>p{text-align:center;color:#707070}.ParasiticMediumModal .UploadRegin-main__views{margin:8px 40px 0;text-align:center;font-size:14px}.ParasiticMediumModal .UploadRegin-main__views>p{margin:0;color:#707070}.ParasiticMediumModal .UploadRegin-main__views>p .blue{color:#3184ee;margin-left:6px}.ParasiticMediumModal .UploadRegin-main__views .tip{margin-top:8px;color:#b7b7b7}.ParasiticMediumModal .UploadImageStatus{margin-top:20px;display:flex;justify-content:space-between;align-items:center;line-height:16px;height:16px}.ParasiticMediumModal .UploadImageStatus .uploadFileName{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ParasiticMediumModal .UploadImageStatus .failed{color:#f31}", "",{"version":3,"sources":["webpack://./src/components/ProjectNodeImageUploader/ParasiticMediumModal.scss"],"names":[],"mappings":"AAAA,sBACE,sBAAA,CACA,WAAA,CACA,eAAA,CACA,kBAAA,CACA,wBACE,QAAA,CAEF,kCACE,iBAAA,CACA,UAAA,CACA,QAAA,CACA,cAAA,CACA,UAAA,CACA,WAAA,CAEF,yBACE,cAAA,CACA,eAAA,CACA,UAAA,CACA,QAAA,CACA,iBAAA,CAEF,mCACE,eAAA,CACA,gBAAA,CACA,mBAAA,CACA,yBAAA,CACA,iBAAA,CACA,cAAA,CACA,8CACE,kBAAA,CACA,oBAAA,CAGA,4CACE,aAAA,CACA,aAAA,CACA,uDACE,sBAAA,CAGJ,mDACE,eAAA,CAEA,mEACE,kBAAA,CAEF,qDACE,iBAAA,CACA,aAAA,CAGJ,+CACE,iBAAA,CACA,iBAAA,CACA,cAAA,CACA,iDACE,QAAA,CACA,aAAA,CACA,uDACE,aAAA,CACA,eAAA,CAIJ,oDACE,cAAA,CACA,aAAA,CAMR,yCACE,eAAA,CACA,YAAA,CACA,6BAAA,CACA,kBAAA,CACA,gBAAA,CACA,WAAA,CACA,yDACE,eAAA,CACA,eAAA,CACA,sBAAA,CACA,kBAAA,CAEF,iDACE,UAAA","sourcesContent":[".ParasiticMediumModal {\n  padding: 24px 46px 40px;\n  width: 540px;\n  background: #fff;\n  border-radius: 12px;\n  p {\n    margin: 0;\n  }\n  .close-icon {\n    position: absolute;\n    right: 20px;\n    top: 20px;\n    cursor: pointer;\n    width: 20px;\n    height: 20px;\n  }\n  > h3 {\n    font-size: 18px;\n    font-weight: 400;\n    color: #333;\n    margin: 0;\n    text-align: center;\n  }\n  .UploadRegin {\n    margin-top: 24px;\n    padding-top: 40px;\n    padding-bottom: 40px;\n    border: 1px dashed rgba(112, 112, 112, 1);\n    border-radius: 8px;\n    cursor: pointer;\n    &.isDragOver {\n      background: #e6f1ff;\n      border-color: #3a95ff;\n    }\n    &-main {\n      > svg {\n        display: block;\n        margin: 0 auto;\n        &.filterGrey {\n          filter: grayscale(100%);\n        }\n      }\n      &__uploading {\n        margin-top: 16px;\n\n        .uploadProgress {\n          margin: 16px 40px 0;\n        }\n        > p {\n          text-align: center;\n          color: #707070;\n        }\n      }\n      &__views {\n        margin: 8px 40px 0;\n        text-align: center;\n        font-size: 14px;\n        > p {\n          margin: 0;\n          color: #707070;\n          .blue {\n            color: #3184ee;\n            margin-left: 6px;\n          }\n        }\n\n        .tip {\n          margin-top: 8px;\n          color: #b7b7b7;\n        }\n      }\n    }\n  }\n\n  .UploadImageStatus {\n    margin-top: 20px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    line-height: 16px;\n    height: 16px;\n    .uploadFileName {\n      max-width: 240px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n    }\n    .failed {\n      color: #ff3311;\n    }\n  }\n}\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+@import '../../styles/variables';
+
+.ParasiticMediumModal {
+  padding: 24px 46px 40px;
+  width: 540px;
+  background: var(--bg-color);
+  border-radius: 12px;
+  p {
+    margin: 0;
+  }
+  .close-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+  > h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--font-color);
+    margin: 0;
+    text-align: center;
+  }
+  .UploadRegin {
+    margin-top: 24px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border: 1px dashed rgba(112, 112, 112, 1);
+    border-radius: 8px;
+    cursor: pointer;
+    &.isDragOver {
+      background: #e6f1ff;
+      border-color: #3a95ff;
+    }
+    &-main {
+      > svg {
+        display: block;
+        margin: 0 auto;
+        &.filterGrey {
+          filter: grayscale(100%);
+        }
+      }
+      &__uploading {
+        margin-top: 16px;
+
+        .uploadProgress {
+          margin: 16px 40px 0;
+        }
+        > p {
+          text-align: center;
+          color: #707070;
+        }
+      }
+      &__views {
+        margin: 8px 40px 0;
+        text-align: center;
+        font-size: 14px;
+        > p {
+          margin: 0;
+          color: #707070;
+          .blue {
+            color: #3184ee;
+            margin-left: 6px;
+          }
+        }
+
+        .tip {
+          margin-top: 8px;
+          color: #b7b7b7;
+        }
+      }
+    }
+  }
+
+  .UploadImageStatus {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 16px;
+    height: 16px;
+    .uploadFileName {
+      max-width: 240px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .failed {
+      color: #ff3311;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ParasiticMediumModal {
+    .UploadRegin {
+      border: 1px dashed $dark-border-color;
+      &.isDragOver {
+        background: $dark-hover-bg-color;
+      }
+    }
+  }
+}

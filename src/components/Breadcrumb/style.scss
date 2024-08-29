@@ -1,8 +1,66 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".Breadcrumb{flex:1 1 auto;margin:0 4px;overflow:hidden;margin-right:30px}.Breadcrumb-mobile{flex:1 1 auto;width:100%}.Breadcrumb__list{display:flex;align-items:center;margin:0;padding:0;list-style:none}.Breadcrumb__list__item{cursor:pointer;box-sizing:border-box;padding:9px 8px;border-radius:8px}.Breadcrumb__list__item__highlight{font-weight:500 !important}.Breadcrumb__list__item__text{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:normal;line-height:14px;letter-spacing:0;color:#515a6e}.Breadcrumb__list__item:hover{background:#f1f3f5}.Breadcrumb__list__last__item:hover{cursor:default !important;background:#fff !important}.Breadcrumb__list__arrow{margin:0 4px;width:20px;height:20px;display:flex;align-items:center;justify-content:center}", "",{"version":3,"sources":["webpack://./src/components/Breadcrumb/style.scss"],"names":[],"mappings":"AAAA,YACE,aAAA,CACA,YAAA,CACA,eAAA,CACA,iBAAA,CAOF,mBACE,aAAA,CACA,UAAA,CAGF,kBACE,YAAA,CACA,kBAAA,CACA,QAAA,CACA,SAAA,CACA,eAAA,CAEA,wBACE,cAAA,CACA,qBAAA,CACA,eAAA,CACA,iBAAA,CAEA,mCACE,0BAAA,CAGF,8BACE,eAAA,CACA,eAAA,CACA,sBAAA,CACA,kBAAA,CACA,cAAA,CACA,kBAAA,CACA,gBAAA,CACA,gBAAA,CACA,aAAA,CAGF,8BACE,kBAAA,CAIJ,oCACE,yBAAA,CACA,0BAAA,CAGF,yBACE,YAAA,CACA,UAAA,CACA,WAAA,CACA,YAAA,CACA,kBAAA,CACA,sBAAA","sourcesContent":[".Breadcrumb {\n  flex: 1 1 auto;\n  margin: 0 4px;\n  overflow: hidden;\n  margin-right: 30px;\n\n  $arrow-elem-width: 8px;\n  $arrow-elem-height: 10px;\n  $arrow-elem-vertical-padding: 5px;\n}\n\n.Breadcrumb-mobile {\n  flex: 1 1 auto;\n  width: 100%;\n}\n\n.Breadcrumb__list {\n  display: flex;\n  align-items: center;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n\n  &__item {\n    cursor: pointer;\n    box-sizing: border-box;\n    padding: 9px 8px;\n    border-radius: 8px;\n\n    &__highlight {\n      font-weight: 500 !important;\n    }\n\n    &__text {\n      max-width: 150px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      white-space: nowrap;\n      font-size: 14px;\n      font-weight: normal;\n      line-height: 14px;\n      letter-spacing: 0px;\n      color: #515A6E;\n    }\n\n    &:hover {\n      background: rgb(241, 243, 245);\n    }\n  }\n\n  &__last__item:hover {\n    cursor: default !important;\n    background: white !important;\n  }\n\n  &__arrow {\n    margin: 0 4px;\n    width: 20px;\n    height: 20px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n}"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+@import '../../styles/variables';
+
+.Breadcrumb {
+  flex: 1 1 auto;
+  margin: 0 4px;
+  overflow: hidden;
+  margin-right: 30px;
+
+  $arrow-elem-width: 8px;
+  $arrow-elem-height: 10px;
+  $arrow-elem-vertical-padding: 5px;
+}
+
+.Breadcrumb-mobile {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.Breadcrumb__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 9px 8px;
+    border-radius: 8px;
+
+    &__highlight {
+      font-weight: 500 !important;
+    }
+
+    &__text {
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 14px;
+      letter-spacing: 0px;
+      color: var(--font-color);
+    }
+
+    &:hover {
+      background: var(--hover-bg-color);
+    }
+  }
+
+  &__last__item:hover {
+    cursor: default !important;
+    background: var(--hover-bg-color) !important;
+  }
+
+  &__arrow {
+    margin: 0 4px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

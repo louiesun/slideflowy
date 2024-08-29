@@ -1,8 +1,88 @@
-// Imports
-import ___CSS_LOADER_API_SOURCEMAP_IMPORT___ from "../../node_modules/css-loader/dist/runtime/sourceMaps.js";
-import ___CSS_LOADER_API_IMPORT___ from "../../node_modules/css-loader/dist/runtime/api.js";
-var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".ShareFileButton__Modal .Modal__overlay{background-color:rgba(0,0,0,.6)}.ShareFileButton__Modal .Modal__body{border-radius:4px}.ShareDialogContent__head{position:relative;height:50px;line-height:50px;border-bottom:1px solid #d8d8d8;text-align:center;font-family:SourceHanSansCN;font-size:16px;color:#626262}.ShareDialogContent__head-close{position:absolute;top:17px;right:17px;width:16px;height:16px;cursor:pointer}.ShareDialogContent__body{padding:0 40px}.ShareDialogContent__body>p{margin:0;font-size:14px}.ShareDialogContent__body .copy-link-tip{margin-top:32px;color:#575757}.ShareDialogContent__body .share-scope-tip{color:#626262;text-transform:capitalize}.ShareDialogContent__body .copy-link{margin:40px 0 25px 0;text-align:right}.ShareDialogContent__body .copy-link span{color:#107ffc;cursor:pointer}.ShareDialogContent__body .copy-link span:hover{opacity:.75}.ShareDialogContent__input{display:block;width:100%;-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:4px;border:1px solid #39f;margin:18px 0;padding:8px;font-size:14px;background:#fff;color:#575757}.ShareDialogContent__input:focus{outline:0;box-shadow:0 0 0 2px rgba(45,140,240,.2)}", "",{"version":3,"sources":["webpack://./src/components/ShareDialogContent.scss"],"names":[],"mappings":"AAGE,wCACE,+BAAA,CAGF,qCACE,iBAAA,CAKF,0BAEE,iBAAA,CACA,WAFS,CAGT,gBAHS,CAIT,+BAAA,CACA,iBAAA,CACA,2BAAA,CACA,cAAA,CACA,aAAA,CAEA,gCAEE,iBAAA,CACA,QAAA,CACA,UAAA,CACA,UAJO,CAKP,WALO,CAMP,cAAA,CAIJ,0BACE,cAAA,CAEA,4BACE,QAAA,CACA,cAAA,CAGF,yCACE,eAAA,CACA,aAAA,CAGF,2CACE,aAAA,CACA,yBAAA,CAGF,qCACE,oBAAA,CACA,gBAAA,CAEA,0CACE,aAAA,CACA,cAAA,CAEA,gDACE,WAAA,CAMR,2BACE,aAAA,CACA,UAAA,CACA,uBAAA,CACA,oBAAA,CACA,eAAA,CACA,iBAAA,CACA,qBAAA,CACA,aAAA,CACA,WAAA,CACA,cAAA,CACA,eAAA,CACA,aAAA,CAEA,iCACE,SAAA,CACA,wCAAA","sourcesContent":["@import '../styles/mixins/text-ellipsis';\n\n.ShareFileButton__Modal {\n  .Modal__overlay {\n    background-color: rgba(0, 0, 0, 0.6);\n  }\n\n  .Modal__body {\n    border-radius: 4px;\n  }\n}\n\n.ShareDialogContent {\n  &__head {\n    $height: 50px;\n    position: relative;\n    height: $height;\n    line-height: $height;\n    border-bottom: 1px solid #d8d8d8;\n    text-align: center;\n    font-family: SourceHanSansCN;\n    font-size: 16px;\n    color: #626262;\n\n    &-close {\n      $size: 16px;\n      position: absolute;\n      top: ($height - $size) / 2;\n      right: ($height - $size) / 2;\n      width: $size;\n      height: $size;\n      cursor: pointer;\n    }\n  }\n\n  &__body {\n    padding: 0 40px;\n\n    > p {\n      margin: 0;\n      font-size: 14px;\n    }\n\n    .copy-link-tip {\n      margin-top: 32px;\n      color: #575757;\n    }\n\n    .share-scope-tip {\n      color: #626262;\n      text-transform: capitalize;\n    }\n\n    .copy-link {\n      margin: 40px 0 25px 0;\n      text-align: right;\n\n      span {\n        color: #107ffc;\n        cursor: pointer;\n\n        &:hover {\n          opacity: 0.75;\n        }\n      }\n    }\n  }\n\n  &__input {\n    display: block;\n    width: 100%;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    border-radius: 4px;\n    border: 1px solid #3399ff;\n    margin: 18px 0;\n    padding: 8px;\n    font-size: 14px;\n    background: #fff;\n    color: #575757;\n\n    &:focus {\n      outline: 0;\n      box-shadow: 0 0 0 2px rgba(45, 140, 240, 0.2);\n    }\n  }\n}\n"],"sourceRoot":""}]);
-// Exports
-export default ___CSS_LOADER_EXPORT___;
+@import '../styles/mixins/text-ellipsis';
+
+.ShareFileButton__Modal {
+  .Modal__overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .Modal__body {
+    border-radius: 4px;
+  }
+}
+
+.ShareDialogContent {
+  &__head {
+    $height: 50px;
+    position: relative;
+    height: $height;
+    line-height: $height;
+    border-bottom: 1px solid #d8d8d8;
+    text-align: center;
+    font-family: SourceHanSansCN;
+    font-size: 16px;
+    color: #626262;
+
+    &-close {
+      $size: 16px;
+      position: absolute;
+      top: ($height - $size) / 2;
+      right: ($height - $size) / 2;
+      width: $size;
+      height: $size;
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    padding: 0 40px;
+
+    > p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .copy-link-tip {
+      margin-top: 32px;
+      color: #575757;
+    }
+
+    .share-scope-tip {
+      color: #626262;
+      text-transform: capitalize;
+    }
+
+    .copy-link {
+      margin: 40px 0 25px 0;
+      text-align: right;
+
+      span {
+        color: #107ffc;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    border: 1px solid #3399ff;
+    margin: 18px 0;
+    padding: 8px;
+    font-size: 14px;
+    background: #fff;
+    color: #575757;
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px rgba(45, 140, 240, 0.2);
+    }
+  }
+}
